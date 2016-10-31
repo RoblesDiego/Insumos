@@ -56,6 +56,8 @@
             this.Presión = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Temperatura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -304,11 +306,27 @@
             this.Etapa.HeaderText = "Etapa";
             this.Etapa.Name = "Etapa";
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(242, 72);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(166, 25);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "Datos históricos";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 407);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -368,6 +386,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Presión;
         private System.Windows.Forms.DataGridViewTextBoxColumn Temperatura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etapa;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label13;
     }
 }
 

@@ -30,6 +30,7 @@ namespace Envio_de_datos_Net
         {
             try
             {
+                timer2.Start();
                 ////lo desabilite para trabajr offline
                 modbusClient = new ModbusClient("10.10.255.168", 502);
                 modbusClient.Connect();
@@ -116,6 +117,18 @@ namespace Envio_de_datos_Net
             frm1.Show();
             }
             
+        }
+        private int _ticks;
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            _ticks++;
+            label13.Text = _ticks.ToString();
+            //timer2.Start();
+            if (_ticks > 4) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
+            {
+                //dataGridView1.Rows.Add(FechaActual, HoraActual, panelv, panelC, batv, batc, temp1);
+                _ticks = 0;
+            }
         }
     }
 }
