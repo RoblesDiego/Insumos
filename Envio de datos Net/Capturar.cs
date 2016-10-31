@@ -31,7 +31,7 @@ namespace Envio_de_datos_Net
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //comment
         }
 
         private void timer2_Tick(object sender, EventArgs e)
