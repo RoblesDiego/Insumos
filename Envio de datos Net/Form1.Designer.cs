@@ -58,12 +58,13 @@
             this.Etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.label13 = new System.Windows.Forms.Label();
+            this.btnDesconectar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 23);
+            this.button1.Location = new System.Drawing.Point(24, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 50);
             this.button1.TabIndex = 0;
@@ -73,7 +74,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -315,17 +315,29 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(242, 72);
+            this.label13.Location = new System.Drawing.Point(184, 93);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(166, 25);
+            this.label13.Size = new System.Drawing.Size(36, 25);
             this.label13.TabIndex = 22;
-            this.label13.Text = "Datos históricos";
+            this.label13.Text = "##";
+            // 
+            // btnDesconectar
+            // 
+            this.btnDesconectar.Enabled = false;
+            this.btnDesconectar.Location = new System.Drawing.Point(150, 40);
+            this.btnDesconectar.Name = "btnDesconectar";
+            this.btnDesconectar.Size = new System.Drawing.Size(120, 50);
+            this.btnDesconectar.TabIndex = 23;
+            this.btnDesconectar.Text = "Desconectar";
+            this.btnDesconectar.UseVisualStyleBackColor = true;
+            this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 407);
+            this.Controls.Add(this.btnDesconectar);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label12);
@@ -388,6 +400,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Etapa;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnDesconectar;
     }
 }
 

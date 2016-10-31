@@ -28,13 +28,16 @@ namespace Envio_de_datos_Net
 
         private void button1_Click(object sender, EventArgs e)
         {
+            button1.Enabled = false;
+            btnDesconectar.Enabled = true;
             try
             {
+                timer1.Start();
                 timer2.Start();
                 ////lo desabilite para trabajr offline
                 modbusClient = new ModbusClient("10.10.255.168", 502);
                 modbusClient.Connect();
-                MessageBox.Show("Conexion establecida . . . ");
+                MessageBox.Show("Conexion establecida :-) ");
                 //button1.Text = "Desconectar";
 
                 //bool[] readcoils = modbusClient.ReadCoils(0, 10);
@@ -73,7 +76,7 @@ namespace Envio_de_datos_Net
         public static int[] readHoldingRegisters;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Start();
+            //timer1.Start();
             try
             {
                 //lo desabilite para trabajr offline
@@ -119,16 +122,40 @@ namespace Envio_de_datos_Net
             
         }
         private int _ticks;
+        private string presion;
+        private string _temperatura;
+        //DateTime Horalectura = DateTime.Now;
+        
         private void timer2_Tick(object sender, EventArgs e)
         {
-            _ticks++;
-            label13.Text = _ticks.ToString();
-            //timer2.Start();
-            if (_ticks > 4) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
+            try
             {
-                //dataGridView1.Rows.Add(FechaActual, HoraActual, panelv, panelC, batv, batc, temp1);
-                _ticks = 0;
+                DateTime Horalectura = DateTime.Now;
+                _ticks++;
+                label13.Text = _ticks.ToString();
+                string tiempoactual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
+                presion = readHoldingRegisters[6].ToString();
+                _temperatura = readHoldingRegisters[40].ToString();
+                //timer2.Start();
+                if (_ticks > 0) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
+                {
+                    dataGridView1.Rows.Add(_ticks ,tiempoactual , presion, _temperatura);
+                    //_ticks = 0;
+                }
+
             }
+            catch { }
+        }
+
+        private void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            btnDesconectar.Enabled = false;
+            button1.Enabled = true;
+            
+            modbusClient.Disconnect();
+            MessageBox.Show("Conexion cerrada :-( ");
+            timer1.Stop();
+            timer2.Stop();
         }
     }
 }
