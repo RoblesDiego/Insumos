@@ -31,7 +31,7 @@ namespace Envio_de_datos_Net
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //comment
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -39,8 +39,8 @@ namespace Envio_de_datos_Net
 
             try
             {
-                label3.Text = Form1.readHoldingRegisters[14].ToString();
-                label4.Text = Form1.readHoldingRegisters[15].ToString();
+                label3.Text = Form1.readHoldingRegisters[40].ToString();
+                label4.Text = Form1.readHoldingRegisters[6].ToString();
                 label10.Text = Form1.readHoldingRegisters[10].ToString();
                 
 
