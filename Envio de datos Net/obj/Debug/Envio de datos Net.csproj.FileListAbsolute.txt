@@ -9,3 +9,13 @@ D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Envio de datos Net\obj\Debug\Envio de datos Net.exe
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Envio de datos Net\obj\Debug\Envio de datos Net.pdb
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Capturar.resources
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe.config
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.pdb
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.pdb
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csprojResolveAssemblyReference.cache
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Capturar.resources
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Form1.resources
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Properties.Resources.resources
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.GenerateResource.Cache
