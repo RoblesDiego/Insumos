@@ -16,13 +16,14 @@ namespace Envio_de_datos_Net
     {
         ModbusClient modbusClient;
         private int _ticks;
-        private string presion;
+        private string _presion;
         private string _temperatura;
         //DateTime Horalectura = DateTime.Now;
         private string _estado;
         public static bool[] readcoils;
         public static int[] readHoldingRegisters;
         public static bool forms_abiero = false;
+        public static int ENPROCESO = 9, ESTERELIZACION=2; //M9, M2 
 
         public Form1()
         {
@@ -36,7 +37,7 @@ namespace Envio_de_datos_Net
             try
             {
                 timer1.Start();
-                timer2.Start();
+                //timer2.Start();
                 ////lo desabilite para trabajr offline
                 modbusClient = new ModbusClient("10.10.255.168", 502);
                 modbusClient.Connect();
@@ -130,24 +131,29 @@ namespace Envio_de_datos_Net
             try
             {
 
-                if(readcoils[8] == true)
+                if(readcoils[ENPROCESO] == true && readcoils[ESTERELIZACION] == false)
                 {
-                    _estado = "Inicio proceso";
+                    _estado = "Precalentamiento";
+                    _enProceso = true;
+                    _precalentamiento = true;
                 }
-                else { 
-                    if (readcoils[50] == true && readcoils [8] == false )
-                    {
-                         _estado = "Precalentamiento";
-                    }
-                    else 
-                    {
-                        if (readcoils [51] == true && readcoils [50] == false)
-                        {
-                           _estado = "completado";
-                        }
-                        else { _estado = "apagado"; }
-                    }
-                        }
+
+                if (readcoils[ESTERELIZACION] == true)
+                {
+                    _estado = "Esterilizacion";
+                    _precalentamiento = false;
+                    _esterilizacion = true;
+                }
+
+                if ( _esterilizacion && readcoils[ESTERELIZACION] == false)
+                {
+                    _estado = "completado";
+                    _enProceso = false;
+                    _completado = true;
+                    _esterilizacion = false;
+                }
+                     
+                    
 
 
                 DateTime Horalectura = DateTime.Now;
@@ -161,11 +167,16 @@ namespace Envio_de_datos_Net
                 {
                     dataGridView1.Rows.Add(_ticks ,tiempoactual , presion, _temperatura, _estado);
                     //_ticks = 0;
-                }
+                
+public  bool _precalentamiento { get; set; }
+public  bool _enProceso { get; set; }
+public  bool _esterilizacion { get; set; }
+public  bool _completado { get; set; }}
 
             }
             catch { }
-        }
+        
+public  bool _enProceso { get; set; }}
 
         private void btnDesconectar_Click(object sender, EventArgs e)
         {
@@ -177,5 +188,7 @@ namespace Envio_de_datos_Net
             timer1.Stop();
             timer2.Stop();
         }
+
+        public bool _enProceso { get; set; }
     }
 }
