@@ -15,16 +15,19 @@ namespace Envio_de_datos_Net
     public partial class Form1 : Form
     {
         ModbusClient modbusClient;
+        private int _ticks;
+        private string presion;
+        private string _temperatura;
+        //DateTime Horalectura = DateTime.Now;
+        private string _estado;
+        public static bool[] readcoils;
+        public static int[] readHoldingRegisters;
+        public static bool forms_abiero = false;
+
         public Form1()
         {
             InitializeComponent();
         }
-
-        public int M0;
-        public int M1;
-        public int M2;
-        public int M3;
-        public int M4;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -72,8 +75,7 @@ namespace Envio_de_datos_Net
         {
             this.Close();
         }
-        public static bool [] readcoils;
-        public static int[] readHoldingRegisters;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             //timer1.Start();
@@ -103,7 +105,7 @@ namespace Envio_de_datos_Net
 
             }
         }
-        public static bool forms_abiero = false;
+        
         private void btnCapturar_Click(object sender, EventArgs e)
         {
            
@@ -121,25 +123,43 @@ namespace Envio_de_datos_Net
             }
             
         }
-        private int _ticks;
-        private string presion;
-        private string _temperatura;
-        //DateTime Horalectura = DateTime.Now;
+       
         
         private void timer2_Tick(object sender, EventArgs e)
         {
             try
             {
+
+                if(readcoils[8] == true)
+                {
+                    _estado = "Inicio proceso";
+                }
+                else { 
+                    if (readcoils[50] == true && readcoils [8] == false )
+                    {
+                         _estado = "Precalentamiento";
+                    }
+                    else 
+                    {
+                        if (readcoils [51] == true && readcoils [50] == false)
+                        {
+                           _estado = "completado";
+                        }
+                        else { _estado = "apagado"; }
+                    }
+                        }
+
+
                 DateTime Horalectura = DateTime.Now;
                 _ticks++;
                 label13.Text = _ticks.ToString();
                 string tiempoactual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
-                presion = readHoldingRegisters[6].ToString();
+                presion = readHoldingRegisters[20].ToString();
                 _temperatura = readHoldingRegisters[40].ToString();
                 //timer2.Start();
                 if (_ticks > 0) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
                 {
-                    dataGridView1.Rows.Add(_ticks ,tiempoactual , presion, _temperatura);
+                    dataGridView1.Rows.Add(_ticks ,tiempoactual , presion, _temperatura, _estado);
                     //_ticks = 0;
                 }
 
