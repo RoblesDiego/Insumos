@@ -35,16 +35,19 @@ namespace Envio_de_datos_Net
         {
             button1.Enabled = false;
             btnDesconectar.Enabled = true;
-
+            btnIniProceso.Enabled = true;
+            
             try
             {
                 timer1.Start();
-                timer2.Start();
+                //timer2.Start();
 
                 ////lo desabilite para trabajr offline
                 modbusClient = new ModbusClient("10.10.255.168", 502);
                 modbusClient.Connect();
-                MessageBox.Show("Conexion establecida . . . ");
+                MessageBox.Show("Conexion establecida :-) ");
+                //bool[] writecoils = modbusClient.WriteSingleCoil[1];
+
                 //button1.Text = "Desconectar";
 
                 //bool[] readcoils = modbusClient.ReadCoils(0, 10);
@@ -188,13 +191,33 @@ namespace Envio_de_datos_Net
             
                 btnDesconectar.Enabled = false;
                 button1.Enabled = true;
+                btnIniProceso.Enabled = false;
 
                 modbusClient.Disconnect();
                 MessageBox.Show("Conexion cerrada :-( ");
                 timer1.Stop();
-                timer2.Stop();
+                //timer2.Stop();
+
             
 
+        }
+
+        private void btnIniProceso_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+            btnDesconectar.Enabled = false;
+            btnFinProceso.Enabled = true;
+            btnIniProceso.Enabled = false;
+            timer2.Start();
+        }
+
+        private void btnFinProceso_Click(object sender, EventArgs e)
+        {
+            btnIniProceso.Enabled = false;
+            btnIniProceso.Enabled = true;
+            btnDesconectar.Enabled = true;
+            btnFinProceso.Enabled = false;
+            timer2.Stop();
         }
     }
 }

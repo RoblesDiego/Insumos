@@ -60,8 +60,10 @@
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblHoraInicio = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnFinProceso = new System.Windows.Forms.Button();
+            this.btnIniProceso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,7 +84,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(691, 366);
+            this.button2.Location = new System.Drawing.Point(691, 410);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 29);
             this.button2.TabIndex = 1;
@@ -232,11 +234,11 @@
             // 
             // btnCapturar
             // 
-            this.btnCapturar.Location = new System.Drawing.Point(12, 366);
+            this.btnCapturar.Location = new System.Drawing.Point(12, 410);
             this.btnCapturar.Name = "btnCapturar";
             this.btnCapturar.Size = new System.Drawing.Size(141, 29);
             this.btnCapturar.TabIndex = 17;
-            this.btnCapturar.Text = "Proceso actual";
+            this.btnCapturar.Text = "lectura actual";
             this.btnCapturar.UseVisualStyleBackColor = true;
             this.btnCapturar.Click += new System.EventHandler(this.btnCapturar_Click);
             // 
@@ -254,7 +256,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 93);
+            this.label11.Location = new System.Drawing.Point(12, 147);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(166, 25);
             this.label11.TabIndex = 19;
@@ -279,7 +281,7 @@
             this.Presión,
             this.Temperatura,
             this.Etapa});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 132);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 176);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(775, 228);
             this.dataGridView1.TabIndex = 21;
@@ -345,15 +347,15 @@
             this.label14.TabIndex = 24;
             this.label14.Text = "Hora Fin:";
             // 
-            // label15
+            // lblHoraInicio
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(409, 93);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(94, 25);
-            this.label15.TabIndex = 25;
-            this.label15.Text = "Hora Fin";
+            this.lblHoraInicio.AutoSize = true;
+            this.lblHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHoraInicio.Location = new System.Drawing.Point(409, 93);
+            this.lblHoraInicio.Name = "lblHoraInicio";
+            this.lblHoraInicio.Size = new System.Drawing.Size(94, 25);
+            this.lblHoraInicio.TabIndex = 25;
+            this.lblHoraInicio.Text = "Hora Fin";
             // 
             // label16
             // 
@@ -365,13 +367,37 @@
             this.label16.TabIndex = 26;
             this.label16.Text = "Hora Fin";
             // 
+            // btnFinProceso
+            // 
+            this.btnFinProceso.Enabled = false;
+            this.btnFinProceso.Location = new System.Drawing.Point(143, 93);
+            this.btnFinProceso.Name = "btnFinProceso";
+            this.btnFinProceso.Size = new System.Drawing.Size(97, 50);
+            this.btnFinProceso.TabIndex = 28;
+            this.btnFinProceso.Text = "Fin de Proceso";
+            this.btnFinProceso.UseVisualStyleBackColor = true;
+            this.btnFinProceso.Click += new System.EventHandler(this.btnFinProceso_Click);
+            // 
+            // btnIniProceso
+            // 
+            this.btnIniProceso.Enabled = false;
+            this.btnIniProceso.Location = new System.Drawing.Point(17, 93);
+            this.btnIniProceso.Name = "btnIniProceso";
+            this.btnIniProceso.Size = new System.Drawing.Size(120, 50);
+            this.btnIniProceso.TabIndex = 27;
+            this.btnIniProceso.Text = "Iniciar proceso";
+            this.btnIniProceso.UseVisualStyleBackColor = true;
+            this.btnIniProceso.Click += new System.EventHandler(this.btnIniProceso_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 407);
+            this.ClientSize = new System.Drawing.Size(995, 451);
+            this.Controls.Add(this.btnFinProceso);
+            this.Controls.Add(this.btnIniProceso);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lblHoraInicio);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnDesconectar);
@@ -438,8 +464,10 @@
         private System.Windows.Forms.Button btnDesconectar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblHoraInicio;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnFinProceso;
+        private System.Windows.Forms.Button btnIniProceso;
     }
 }
 
