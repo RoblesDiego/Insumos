@@ -202,13 +202,21 @@ namespace Envio_de_datos_Net
 
         }
 
+        //DateTime LecturaActualInicio = DateTime.Now;
+        
         private void btnIniProceso_Click(object sender, EventArgs e)
         {
+
+            DateTime LecturaActualInicio = DateTime.Now;
             button1.Enabled = false;
             btnDesconectar.Enabled = false;
             btnFinProceso.Enabled = true;
             btnIniProceso.Enabled = false;
             timer2.Start();
+
+            string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
+            lblHoraInicio.Text = _lecturaActual.ToString();
+            
         }
 
         private void btnFinProceso_Click(object sender, EventArgs e)
@@ -217,6 +225,11 @@ namespace Envio_de_datos_Net
             btnIniProceso.Enabled = true;
             btnDesconectar.Enabled = true;
             btnFinProceso.Enabled = false;
+            DateTime LecturaActualFin = DateTime.Now;
+
+            string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
+            lblHoraFin.Text = _lecturaActualFin.ToString();
+
             timer2.Stop();
         }
     }
