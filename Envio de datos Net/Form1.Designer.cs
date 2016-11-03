@@ -64,12 +64,14 @@
             this.lblHoraFin = new System.Windows.Forms.Label();
             this.btnFinProceso = new System.Windows.Forms.Button();
             this.btnIniProceso = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(17, 40);
+            this.button1.Location = new System.Drawing.Point(17, 52);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 50);
             this.button1.TabIndex = 0;
@@ -84,7 +86,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(691, 410);
+            this.button2.Location = new System.Drawing.Point(460, 414);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 29);
             this.button2.TabIndex = 1;
@@ -234,7 +236,7 @@
             // 
             // btnCapturar
             // 
-            this.btnCapturar.Location = new System.Drawing.Point(12, 410);
+            this.btnCapturar.Location = new System.Drawing.Point(12, 415);
             this.btnCapturar.Name = "btnCapturar";
             this.btnCapturar.Size = new System.Drawing.Size(141, 29);
             this.btnCapturar.TabIndex = 17;
@@ -245,10 +247,10 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(205, 9);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(25, 9);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(377, 25);
+            this.label10.Size = new System.Drawing.Size(507, 31);
             this.label10.TabIndex = 18;
             this.label10.Text = "Control de procesos - Insumos Bolivia";
             // 
@@ -256,7 +258,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(12, 147);
+            this.label11.Location = new System.Drawing.Point(12, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(166, 25);
             this.label11.TabIndex = 19;
@@ -266,7 +268,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(289, 93);
+            this.label12.Location = new System.Drawing.Point(249, 62);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(121, 25);
             this.label12.TabIndex = 20;
@@ -281,9 +283,9 @@
             this.Presión,
             this.Temperatura,
             this.Etapa});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 176);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 183);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(775, 228);
+            this.dataGridView1.Size = new System.Drawing.Size(544, 228);
             this.dataGridView1.TabIndex = 21;
             // 
             // Item
@@ -319,7 +321,7 @@
             // btnDesconectar
             // 
             this.btnDesconectar.Enabled = false;
-            this.btnDesconectar.Location = new System.Drawing.Point(143, 40);
+            this.btnDesconectar.Location = new System.Drawing.Point(143, 52);
             this.btnDesconectar.Name = "btnDesconectar";
             this.btnDesconectar.Size = new System.Drawing.Size(97, 50);
             this.btnDesconectar.TabIndex = 22;
@@ -331,7 +333,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(12, 9);
+            this.label13.Location = new System.Drawing.Point(513, 130);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(42, 25);
             this.label13.TabIndex = 23;
@@ -341,7 +343,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(555, 93);
+            this.label14.Location = new System.Drawing.Point(252, 115);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 25);
             this.label14.TabIndex = 24;
@@ -351,26 +353,26 @@
             // 
             this.lblHoraInicio.AutoSize = true;
             this.lblHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraInicio.Location = new System.Drawing.Point(409, 93);
+            this.lblHoraInicio.Location = new System.Drawing.Point(369, 62);
             this.lblHoraInicio.Name = "lblHoraInicio";
-            this.lblHoraInicio.Size = new System.Drawing.Size(94, 25);
+            this.lblHoraInicio.Size = new System.Drawing.Size(98, 25);
             this.lblHoraInicio.TabIndex = 25;
-            this.lblHoraInicio.Text = "Hora Fin";
+            this.lblHoraInicio.Text = "##:##:##";
             // 
             // lblHoraFin
             // 
             this.lblHoraFin.AutoSize = true;
             this.lblHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraFin.Location = new System.Drawing.Point(655, 93);
+            this.lblHoraFin.Location = new System.Drawing.Point(352, 115);
             this.lblHoraFin.Name = "lblHoraFin";
-            this.lblHoraFin.Size = new System.Drawing.Size(94, 25);
+            this.lblHoraFin.Size = new System.Drawing.Size(98, 25);
             this.lblHoraFin.TabIndex = 26;
-            this.lblHoraFin.Text = "Hora Fin";
+            this.lblHoraFin.Text = "##:##:##";
             // 
             // btnFinProceso
             // 
             this.btnFinProceso.Enabled = false;
-            this.btnFinProceso.Location = new System.Drawing.Point(143, 93);
+            this.btnFinProceso.Location = new System.Drawing.Point(143, 105);
             this.btnFinProceso.Name = "btnFinProceso";
             this.btnFinProceso.Size = new System.Drawing.Size(97, 50);
             this.btnFinProceso.TabIndex = 28;
@@ -381,7 +383,7 @@
             // btnIniProceso
             // 
             this.btnIniProceso.Enabled = false;
-            this.btnIniProceso.Location = new System.Drawing.Point(17, 93);
+            this.btnIniProceso.Location = new System.Drawing.Point(17, 105);
             this.btnIniProceso.Name = "btnIniProceso";
             this.btnIniProceso.Size = new System.Drawing.Size(120, 50);
             this.btnIniProceso.TabIndex = 27;
@@ -389,11 +391,20 @@
             this.btnIniProceso.UseVisualStyleBackColor = true;
             this.btnIniProceso.Click += new System.EventHandler(this.btnIniProceso_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(486, 62);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(70, 61);
+            this.pictureBox1.TabIndex = 29;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 451);
+            this.ClientSize = new System.Drawing.Size(567, 451);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFinProceso);
             this.Controls.Add(this.btnIniProceso);
             this.Controls.Add(this.lblHoraFin);
@@ -426,6 +437,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,6 +480,7 @@
         private System.Windows.Forms.Label lblHoraFin;
         private System.Windows.Forms.Button btnFinProceso;
         private System.Windows.Forms.Button btnIniProceso;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

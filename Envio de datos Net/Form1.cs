@@ -31,6 +31,7 @@ namespace Envio_de_datos_Net
         public bool _precalentamieno;
         public bool _esterelizacion;
         public bool _completado;
+        public bool _IniProceso;
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -107,6 +108,20 @@ namespace Envio_de_datos_Net
                 for (int i = 0; i < readHoldingRegisters.Length; i++)
                     label9.Text = readHoldingRegisters[0].ToString();
                 label8.Text = readHoldingRegisters[8].ToString();
+
+
+                if (_IniProceso  == false)
+                {
+                   
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\gris.bmp");
+                }
+                else
+                {
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\gris.bmp");
+                }
+
+
             }
             catch
             {
@@ -146,6 +161,7 @@ namespace Envio_de_datos_Net
                     _estado = "Precalentamiento";
                     _enProceso = true;
                     _precalentamieno = true;
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
                 }
                 else
                 {
@@ -163,6 +179,7 @@ namespace Envio_de_datos_Net
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
+                          
 
                             //tratando de deteenr y capturar la hora
                             try
@@ -179,6 +196,7 @@ namespace Envio_de_datos_Net
                                     btnIniProceso.Enabled = true;
                                     btnDesconectar.Enabled = true;
                                     btnFinProceso.Enabled = false;
+                                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azul.bmp");
 
                                     timer2.Stop();
                                 }
@@ -237,6 +255,8 @@ namespace Envio_de_datos_Net
             btnDesconectar.Enabled = false;
             btnFinProceso.Enabled = true;
             btnIniProceso.Enabled = false;
+            //inicia proceso
+            _IniProceso = true;
             timer2.Start();
 
             string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
@@ -250,6 +270,7 @@ namespace Envio_de_datos_Net
             btnIniProceso.Enabled = true;
             btnDesconectar.Enabled = true;
             btnFinProceso.Enabled = false;
+            _IniProceso = false;
             DateTime LecturaActualFin = DateTime.Now;
 
             string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
