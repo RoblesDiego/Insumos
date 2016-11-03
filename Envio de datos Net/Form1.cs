@@ -163,6 +163,31 @@ namespace Envio_de_datos_Net
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
+
+                            //tratando de deteenr y capturar la hora
+                            try
+                            {
+                                if (_completado == true)
+                                {
+                                    DateTime LecturaActualFin = DateTime.Now;
+
+                                    string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
+
+                                    lblHoraFin.Text = _lecturaActualFin.ToString();
+
+                                    btnIniProceso.Enabled = false;
+                                    btnIniProceso.Enabled = true;
+                                    btnDesconectar.Enabled = true;
+                                    btnFinProceso.Enabled = false;
+
+                                    timer2.Stop();
+                                }
+                            }
+                            catch
+                            {
+                            }
+
+
                         }
                         else { _estado = "apagado"; }
                     }
@@ -229,6 +254,8 @@ namespace Envio_de_datos_Net
 
             string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
             lblHoraFin.Text = _lecturaActualFin.ToString();
+
+          
 
             timer2.Stop();
         }
