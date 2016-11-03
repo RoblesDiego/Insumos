@@ -59,12 +59,15 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 23);
+            this.button1.Location = new System.Drawing.Point(17, 40);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 50);
             this.button1.TabIndex = 0;
@@ -261,11 +264,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(515, 93);
+            this.label12.Location = new System.Drawing.Point(289, 93);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(136, 25);
+            this.label12.Size = new System.Drawing.Size(121, 25);
             this.label12.TabIndex = 20;
-            this.label12.Text = "Fecha actual";
+            this.label12.Text = "Hora inicio:";
             // 
             // dataGridView1
             // 
@@ -314,11 +317,11 @@
             // btnDesconectar
             // 
             this.btnDesconectar.Enabled = false;
-            this.btnDesconectar.Location = new System.Drawing.Point(180, 50);
+            this.btnDesconectar.Location = new System.Drawing.Point(143, 40);
             this.btnDesconectar.Name = "btnDesconectar";
-            this.btnDesconectar.Size = new System.Drawing.Size(75, 23);
+            this.btnDesconectar.Size = new System.Drawing.Size(97, 50);
             this.btnDesconectar.TabIndex = 22;
-            this.btnDesconectar.Text = "button3";
+            this.btnDesconectar.Text = "Desconectar";
             this.btnDesconectar.UseVisualStyleBackColor = true;
             this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
@@ -326,17 +329,50 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(299, 84);
+            this.label13.Location = new System.Drawing.Point(12, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(42, 25);
             this.label13.TabIndex = 23;
             this.label13.Text = "M0";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(555, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(101, 25);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Hora Fin:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(409, 93);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(94, 25);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Hora Fin";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(655, 93);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 25);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Hora Fin";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(995, 407);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.btnDesconectar);
             this.Controls.Add(this.dataGridView1);
@@ -401,6 +437,9 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button btnDesconectar;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
     }
 }
 

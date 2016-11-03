@@ -25,7 +25,12 @@ namespace Envio_de_datos_Net
         public int M2;
         public int M3;
         public int M4;
-
+        public int ENPROCESO = 8;
+        public int ESTERELIZACION = 50;
+        public bool _enProceso;
+        public bool _precalentamieno;
+        public bool _esterelizacion;
+        public bool _completado;
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -133,9 +138,9 @@ namespace Envio_de_datos_Net
         {
             try{
 
-                if (readcoils[8] == true)
+                if (readcoils[ENPROCESO] == true && readcoils [ESTERELIZACION] == false )
                 {
-                    _estado = "Inicio proceso";
+                    _estado = "Precalentamiento";
                 }
                 else
                 {
