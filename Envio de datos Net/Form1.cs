@@ -141,18 +141,25 @@ namespace Envio_de_datos_Net
                 if (readcoils[ENPROCESO] == true && readcoils [ESTERELIZACION] == false )
                 {
                     _estado = "Precalentamiento";
+                    _enProceso = true;
+                    _precalentamieno = true;
                 }
                 else
                 {
-                    if (readcoils[50] == true && readcoils[8] == false)
+                    if (readcoils[ESTERELIZACION ] == true)
                     {
-                        _estado = "Precalentamiento";
+                        _estado = "Esterelizacion";
+                        _precalentamieno = false;
+                        _esterelizacion = true;
                     }
                     else
                     {
-                        if (readcoils[51] == true && readcoils[50] == false)
+                        if (_esterelizacion  == true && readcoils[ESTERELIZACION ] == false)
                         {
                             _estado = "completado";
+                            _enProceso = false;
+                            _completado = true;
+                            _esterelizacion = false;
                         }
                         else { _estado = "apagado"; }
                     }
