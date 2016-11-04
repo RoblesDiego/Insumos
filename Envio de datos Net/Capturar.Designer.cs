@@ -45,7 +45,9 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.lblProceso = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Grafica = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grafica)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -112,7 +114,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(513, 144);
+            this.label6.Location = new System.Drawing.Point(426, 144);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 25);
             this.label6.TabIndex = 18;
@@ -122,7 +124,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(484, 119);
+            this.label7.Location = new System.Drawing.Point(397, 119);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(160, 25);
             this.label7.TabIndex = 17;
@@ -132,7 +134,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(513, 78);
+            this.label8.Location = new System.Drawing.Point(426, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 25);
             this.label8.TabIndex = 16;
@@ -142,7 +144,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(463, 53);
+            this.label9.Location = new System.Drawing.Point(376, 53);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(181, 25);
             this.label9.TabIndex = 15;
@@ -152,7 +154,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(304, 78);
+            this.label10.Location = new System.Drawing.Point(255, 78);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 25);
             this.label10.TabIndex = 20;
@@ -162,7 +164,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(221, 53);
+            this.label11.Location = new System.Drawing.Point(172, 53);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(205, 25);
             this.label11.TabIndex = 19;
@@ -180,7 +182,6 @@
             // 
             // timer2
             // 
-            this.timer2.Enabled = true;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // lblProceso
@@ -201,11 +202,21 @@
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
+            // Grafica
+            // 
+            this.Grafica.BackColor = System.Drawing.Color.White;
+            this.Grafica.Location = new System.Drawing.Point(563, 53);
+            this.Grafica.Name = "Grafica";
+            this.Grafica.Size = new System.Drawing.Size(654, 262);
+            this.Grafica.TabIndex = 31;
+            this.Grafica.TabStop = false;
+            // 
             // Capturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 359);
+            this.ClientSize = new System.Drawing.Size(1257, 359);
+            this.Controls.Add(this.Grafica);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblProceso);
             this.Controls.Add(this.button1);
@@ -224,6 +235,7 @@
             this.Name = "Capturar";
             this.Text = "Capturar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Grafica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +259,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label lblProceso;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Grafica;
     }
 }

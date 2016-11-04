@@ -20,11 +20,7 @@ namespace Envio_de_datos_Net
             InitializeComponent();
         }
 
-        public int M0;
-        public int M1;
-        public int M2;
-        public int M3;
-        public int M4;
+
         public int ENPROCESO = 8;
         public int ESTERELIZACION = 50;
         public bool _enProceso;
@@ -34,9 +30,9 @@ namespace Envio_de_datos_Net
         public bool _IniProceso;
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            btnDesconectar.Enabled = true;
-            btnIniProceso.Enabled = true;
+            //button1.Enabled = false;
+            //btnDesconectar.Enabled = true;
+            //btnIniProceso.Enabled = true;
             
             try
             {
@@ -47,6 +43,10 @@ namespace Envio_de_datos_Net
                 modbusClient = new ModbusClient("10.10.255.168", 502);
                 modbusClient.Connect();
                 MessageBox.Show("Conexion establecida :-) ");
+                button1.Enabled = false;
+                btnDesconectar.Enabled = true;
+                btnIniProceso.Enabled = true;
+                btnCapturar.Enabled = true;
                 //bool[] writecoils = modbusClient.WriteSingleCoil[1];
 
                 //button1.Text = "Desconectar";
@@ -154,6 +154,7 @@ namespace Envio_de_datos_Net
        
         private void timer2_Tick(object sender, EventArgs e)
         {
+            //seleccion de la etapa de trabajo
             try{
 
                 if (readcoils[ENPROCESO] == true && readcoils [ESTERELIZACION] == false )
@@ -235,6 +236,7 @@ namespace Envio_de_datos_Net
                 btnDesconectar.Enabled = false;
                 button1.Enabled = true;
                 btnIniProceso.Enabled = false;
+                btnCapturar.Enabled = false;
 
                 modbusClient.Disconnect();
                 MessageBox.Show("Conexion cerrada :-( ");
@@ -249,7 +251,7 @@ namespace Envio_de_datos_Net
         
         private void btnIniProceso_Click(object sender, EventArgs e)
         {
-
+            
             DateTime LecturaActualInicio = DateTime.Now;
             button1.Enabled = false;
             btnDesconectar.Enabled = false;
