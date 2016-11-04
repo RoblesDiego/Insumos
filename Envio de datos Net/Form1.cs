@@ -47,6 +47,7 @@ namespace Envio_de_datos_Net
                 btnDesconectar.Enabled = true;
                 btnIniProceso.Enabled = true;
                 btnCapturar.Enabled = true;
+                button2.Enabled = false;
                 //bool[] writecoils = modbusClient.WriteSingleCoil[1];
 
                 //button1.Text = "Desconectar";
@@ -76,8 +77,9 @@ namespace Envio_de_datos_Net
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -237,6 +239,7 @@ namespace Envio_de_datos_Net
                 button1.Enabled = true;
                 btnIniProceso.Enabled = false;
                 btnCapturar.Enabled = false;
+                button2.Enabled = true;
 
                 modbusClient.Disconnect();
                 MessageBox.Show("Conexion cerrada :-( ");
