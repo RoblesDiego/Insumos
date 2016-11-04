@@ -417,9 +417,8 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Enabled = false;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(509, 126);
+            this.lblEstado.Location = new System.Drawing.Point(489, 126);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(46, 13);
             this.lblEstado.TabIndex = 31;
