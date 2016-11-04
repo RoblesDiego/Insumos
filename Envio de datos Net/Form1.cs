@@ -116,7 +116,7 @@ namespace Envio_de_datos_Net
                 {
                    
                     //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\gris.bmp");
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                 }
                 else
                 {
@@ -156,6 +156,8 @@ namespace Envio_de_datos_Net
        
         private void timer2_Tick(object sender, EventArgs e)
         {
+
+           
             //seleccion de la etapa de trabajo
             try{
 
@@ -218,7 +220,7 @@ namespace Envio_de_datos_Net
                         {
                         _estado = "apagado";
                         //lblEstado.Text = "apagado".ToString();
-                        pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
+                        //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                         }
 
                     }
