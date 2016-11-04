@@ -164,8 +164,8 @@ namespace Envio_de_datos_Net
                     _estado = "Precalentamiento";
                     _enProceso = true;
                     _precalentamieno = true;
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
-                    lblEstado.Text = "Precalentamiento".ToString();
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
+                    //lblEstado.Text = "Precalentamiento".ToString();
                 }
                 else
                 {
@@ -174,7 +174,8 @@ namespace Envio_de_datos_Net
                         _estado = "Esterelizacion";
                         _precalentamieno = false;
                         _esterelizacion = true;
-                        lblEstado.Text = "Esterelizacion".ToString();
+                        pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
+                        //lblEstado.Text = "Esterelizacion".ToString();
                     }
                     else
                     {
@@ -184,7 +185,7 @@ namespace Envio_de_datos_Net
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
-                            lblEstado.Text = "completado".ToString();
+                            //lblEstado.Text = "completado".ToString();
                           
 
                             //tratando de deteenr y capturar la hora
@@ -202,7 +203,7 @@ namespace Envio_de_datos_Net
                                     btnIniProceso.Enabled = true;
                                     btnDesconectar.Enabled = true;
                                     btnFinProceso.Enabled = false;
-                                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azul.bmp");
+                                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
 
                                     timer2.Stop();
                                 }
@@ -216,7 +217,8 @@ namespace Envio_de_datos_Net
                         else 
                         {
                         _estado = "apagado";
-                        lblEstado.Text = "apagado".ToString();
+                        //lblEstado.Text = "apagado".ToString();
+                        pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                         }
 
                     }
