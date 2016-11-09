@@ -234,6 +234,7 @@ namespace Envio_de_datos_Net
                 string tiempoactual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[6].ToString();
                 _temperatura = readHoldingRegisters[40].ToString();
+                //dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Estado");
                 //timer2.Start();
                 if (_ticks > 0) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
                 {
@@ -282,6 +283,7 @@ namespace Envio_de_datos_Net
 
             string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
             lblHoraInicio.Text = _lecturaActual.ToString();
+            dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
             
         }
 
@@ -307,6 +309,7 @@ namespace Envio_de_datos_Net
         {
             Conexion_Net exp = new Conexion_Net();
             exp.ExportarDataGridViewExcel(dataGridView1);
+            dataGridView1.ClearSelection();
         }
 
         //public void exportarExcel (DataGridView _tabla)

@@ -13,14 +13,7 @@ namespace Envio_de_datos_Net
     class Conexion_Net
     {
         public class conxion {
-                //ModbusClient modbusClient;        
-                //modbusClient = new ModbusClient("10.10.255.168", 502);
-                //modbusClient.Connect();
-                //MessageBox.Show("Conexion establecida . . . ");
-                // modbusClient = new ModbusClient("10.10.255.168", 502);
-                //modbusClient.Connect();
-                // MessageBox.Show("Conexion establecida . . . ");
-                //button1.Text = "Desconectar";
+               
             }
         //Exporta Datagridview a Archivo de Excel
         public void ExportarDataGridViewExcel(DataGridView grd)
@@ -39,8 +32,7 @@ namespace Envio_de_datos_Net
 
                     aplicacion = new Microsoft.Office.Interop.Excel.Application();
                     libros_trabajo = aplicacion.Workbooks.Add();
-                    hoja_trabajo =
-                        (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                    hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
 
                     //Recorremos el DataGridView rellenando la hoja de trabajo
                     for (int i = 0; i < grd.Rows.Count - 1; i++)
