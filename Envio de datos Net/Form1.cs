@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyModbus;
 using System.IO;
+//using Microsoft.Office.Interop.Excel;
 
 namespace Envio_de_datos_Net
 {
@@ -297,5 +298,37 @@ namespace Envio_de_datos_Net
 
             timer2.Stop();
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //public void exportarExcel (DataGridView _tabla)
+        //{
+        //    Microsoft.Office.Interop.Excel.Application _excel = new Microsoft.Office.Interop.Excel.Application();
+        //    _excel.Application.Workbooks.Add(true);
+        //    int _IndiceColumna = 0;
+
+        //    foreach (DataGridViewColumn col in _tabla.Columns) //columnas
+        //    {
+        //        _IndiceColumna++;
+        //        _excel.Cells[1, _IndiceColumna] = col.Name;
+        //    }
+        //    int _IndiceFila = 0;
+
+        //    foreach (DataGridView row in _tabla.Rows) //Fila
+        //    {
+        //        _IndiceFila++;
+        //        _IndiceColumna = 0;
+
+        //        foreach (DataGridView col in _tabla.Columns)
+        //        {
+        //            _IndiceColumna++;
+        //            _excel.Cells[_IndiceFila + 1, _IndiceColumna] =  _excel.Cells[col.Name].value;
+        //        }
+        //    }
+        //    _excel.Visible = true;
+        //} 
     }
 }

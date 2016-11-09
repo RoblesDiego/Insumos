@@ -67,18 +67,21 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(27, 52);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 50);
+            this.button1.Size = new System.Drawing.Size(100, 50);
             this.button1.TabIndex = 0;
             this.button1.Text = "Conectar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // timer1
@@ -273,7 +276,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(259, 62);
+            this.label12.Location = new System.Drawing.Point(248, 62);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(121, 25);
             this.label12.TabIndex = 20;
@@ -325,13 +328,15 @@
             // 
             // btnDesconectar
             // 
+            this.btnDesconectar.BackColor = System.Drawing.SystemColors.Control;
             this.btnDesconectar.Enabled = false;
-            this.btnDesconectar.Location = new System.Drawing.Point(153, 52);
+            this.btnDesconectar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesconectar.Location = new System.Drawing.Point(132, 52);
             this.btnDesconectar.Name = "btnDesconectar";
-            this.btnDesconectar.Size = new System.Drawing.Size(97, 50);
+            this.btnDesconectar.Size = new System.Drawing.Size(100, 50);
             this.btnDesconectar.TabIndex = 22;
             this.btnDesconectar.Text = "Desconectar";
-            this.btnDesconectar.UseVisualStyleBackColor = true;
+            this.btnDesconectar.UseVisualStyleBackColor = false;
             this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
             // label13
@@ -348,7 +353,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(259, 87);
+            this.label14.Location = new System.Drawing.Point(248, 87);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 25);
             this.label14.TabIndex = 24;
@@ -358,7 +363,7 @@
             // 
             this.lblHoraInicio.AutoSize = true;
             this.lblHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraInicio.Location = new System.Drawing.Point(379, 62);
+            this.lblHoraInicio.Location = new System.Drawing.Point(368, 62);
             this.lblHoraInicio.Name = "lblHoraInicio";
             this.lblHoraInicio.Size = new System.Drawing.Size(98, 25);
             this.lblHoraInicio.TabIndex = 25;
@@ -368,7 +373,7 @@
             // 
             this.lblHoraFin.AutoSize = true;
             this.lblHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraFin.Location = new System.Drawing.Point(375, 87);
+            this.lblHoraFin.Location = new System.Drawing.Point(364, 87);
             this.lblHoraFin.Name = "lblHoraFin";
             this.lblHoraFin.Size = new System.Drawing.Size(98, 25);
             this.lblHoraFin.TabIndex = 26;
@@ -377,9 +382,10 @@
             // btnFinProceso
             // 
             this.btnFinProceso.Enabled = false;
-            this.btnFinProceso.Location = new System.Drawing.Point(153, 105);
+            this.btnFinProceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinProceso.Location = new System.Drawing.Point(132, 105);
             this.btnFinProceso.Name = "btnFinProceso";
-            this.btnFinProceso.Size = new System.Drawing.Size(97, 50);
+            this.btnFinProceso.Size = new System.Drawing.Size(100, 50);
             this.btnFinProceso.TabIndex = 28;
             this.btnFinProceso.Text = "Fin de Proceso";
             this.btnFinProceso.UseVisualStyleBackColor = true;
@@ -388,9 +394,10 @@
             // btnIniProceso
             // 
             this.btnIniProceso.Enabled = false;
+            this.btnIniProceso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniProceso.Location = new System.Drawing.Point(27, 105);
             this.btnIniProceso.Name = "btnIniProceso";
-            this.btnIniProceso.Size = new System.Drawing.Size(120, 50);
+            this.btnIniProceso.Size = new System.Drawing.Size(100, 50);
             this.btnIniProceso.TabIndex = 27;
             this.btnIniProceso.Text = "Iniciar proceso";
             this.btnIniProceso.UseVisualStyleBackColor = true;
@@ -426,12 +433,26 @@
             this.lblEstado.TabIndex = 31;
             this.lblEstado.Text = "Estado";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(27, 417);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(186, 29);
+            this.btnGuardar.TabIndex = 32;
+            this.btnGuardar.Text = "Guardar en Excel";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(590, 446);
             this.ControlBox = false;
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.pictureBox1);
@@ -513,6 +534,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
 

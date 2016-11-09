@@ -19,3 +19,4 @@ D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Form1.resources
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Properties.Resources.resources
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.GenerateResource.Cache
+D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.ResolveComReference.cache

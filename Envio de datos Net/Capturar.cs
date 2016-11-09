@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyModbus;
 using System.IO;
+//using Microsoft.Office.Interop.Excel;
 
 namespace Envio_de_datos_Net
 {
