@@ -206,6 +206,7 @@ namespace Envio_de_datos_Net
                                     btnIniProceso.Enabled = true;
                                     btnDesconectar.Enabled = true;
                                     btnFinProceso.Enabled = false;
+                                    btnGuardar.Enabled = true;
                                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
 
                                     timer2.Stop();
@@ -253,6 +254,7 @@ namespace Envio_de_datos_Net
                 btnIniProceso.Enabled = false;
                 btnCapturar.Enabled = false;
                 button2.Enabled = true;
+                btnGuardar.Enabled = false;
 
                 modbusClient.Disconnect();
                 MessageBox.Show("Conexion cerrada :-( ");
@@ -273,6 +275,7 @@ namespace Envio_de_datos_Net
             btnDesconectar.Enabled = false;
             btnFinProceso.Enabled = true;
             btnIniProceso.Enabled = false;
+            btnGuardar.Enabled = false;
             //inicia proceso
             _IniProceso = true;
             timer2.Start();
@@ -288,6 +291,7 @@ namespace Envio_de_datos_Net
             btnIniProceso.Enabled = true;
             btnDesconectar.Enabled = true;
             btnFinProceso.Enabled = false;
+            btnGuardar.Enabled = true;
             _IniProceso = false;
             DateTime LecturaActualFin = DateTime.Now;
 
@@ -301,7 +305,8 @@ namespace Envio_de_datos_Net
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            Conexion_Net exp = new Conexion_Net();
+            exp.ExportarDataGridViewExcel(dataGridView1);
         }
 
         //public void exportarExcel (DataGridView _tabla)

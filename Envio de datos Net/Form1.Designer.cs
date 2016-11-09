@@ -436,6 +436,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardar.Enabled = false;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Location = new System.Drawing.Point(27, 417);
             this.btnGuardar.Name = "btnGuardar";
@@ -450,7 +451,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(590, 446);
+            this.ClientSize = new System.Drawing.Size(590, 455);
             this.ControlBox = false;
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblEstado);
