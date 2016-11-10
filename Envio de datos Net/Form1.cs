@@ -49,7 +49,7 @@ namespace Envio_de_datos_Net
                 button1.Enabled = false;
                 btnDesconectar.Enabled = true;
                 btnIniProceso.Enabled = true;
-                btnCapturar.Enabled = true;
+                //btnCapturar.Enabled = true;
                 button2.Enabled = false;
 
             }
@@ -84,15 +84,6 @@ namespace Envio_de_datos_Net
                     readcoils = modbusClient.ReadCoils(0, 100);
                 //int[] 
                     readHoldingRegisters = modbusClient.ReadHoldingRegisters(0, 100);
-
-
-                for (int i = 0; i < readcoils.Length; i++)
-                    LM0.Text = readcoils[0].ToString();
-
-                for (int i = 0; i < readHoldingRegisters.Length; i++)
-                    label9.Text = readHoldingRegisters[0].ToString();
-                label8.Text = readHoldingRegisters[8].ToString();
-
 
                 if (_IniProceso  == false)
                 {
@@ -233,7 +224,6 @@ namespace Envio_de_datos_Net
                 btnDesconectar.Enabled = false;
                 button1.Enabled = true;
                 btnIniProceso.Enabled = false;
-                btnCapturar.Enabled = false;
                 button2.Enabled = true;
                 btnGuardar.Enabled = false;
 
@@ -289,6 +279,11 @@ namespace Envio_de_datos_Net
             Conexion_Net _ExportaraExcel = new Conexion_Net();
             _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
             this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel.
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
 
