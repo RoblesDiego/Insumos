@@ -196,9 +196,9 @@ namespace Envio_de_datos_Net
                             {
                                 if (_completado == true)
                                 {
-                                    DateTime LecturaActualFin = DateTime.Now;
+                                    DateTime _LecturaActualFin = DateTime.Now;
 
-                                    string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
+                                    string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
 
                                     lblHoraFin.Text = _lecturaActualFin.ToString();
 
@@ -231,14 +231,14 @@ namespace Envio_de_datos_Net
              DateTime Horalectura = DateTime.Now;
                 _ticks++;
                 label13.Text = _ticks.ToString();
-                string tiempoactual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
+                string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[6].ToString();
                 _temperatura = readHoldingRegisters[40].ToString();
                 //dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Estado");
                 //timer2.Start();
                 if (_ticks > 0) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
                 {
-                    dataGridView1.Rows.Add(_ticks ,tiempoactual , _presion, _temperatura, _estado);
+                    dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
                     //_ticks = 0;
                 }
 
@@ -295,9 +295,9 @@ namespace Envio_de_datos_Net
             btnFinProceso.Enabled = false;
             btnGuardar.Enabled = true;
             _IniProceso = false;
-            DateTime LecturaActualFin = DateTime.Now;
+            DateTime _LecturaActualFin = DateTime.Now;
 
-            string _lecturaActualFin = LecturaActualFin.Hour.ToString() + ":" + LecturaActualFin.Minute.ToString() + ":" + LecturaActualFin.Second.ToString();
+            string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
             lblHoraFin.Text = _lecturaActualFin.ToString();
 
           
@@ -307,9 +307,17 @@ namespace Envio_de_datos_Net
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Conexion_Net exp = new Conexion_Net();
-            exp.ExportarDataGridViewExcel(dataGridView1);
-            dataGridView1.ClearSelection();
+            Conexion_Net _ExportaraExcel = new Conexion_Net();
+            _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
+            //if (this.dataGridView1.DataSource != null)
+            //{
+            //    this.dataGridView1.DataSource = null;
+            //}
+            //else
+            //{
+            //    this.dataGridView1.Rows.Clear();
+            //}
+            this.dataGridView1.Rows.Clear();
         }
 
         //public void exportarExcel (DataGridView _tabla)
