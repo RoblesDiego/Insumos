@@ -250,9 +250,9 @@ namespace Envio_de_datos_Net
                                     btnGuardar.Enabled = true;
                                     //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
                                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
-                                    Conexion_Net _ExportaraExcel = new Conexion_Net();
-                                    _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
-                                    this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
+                                    //Conexion_Net _ExportaraExcel = new Conexion_Net();
+                                    //_ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
+                                    //this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                
                                     timer2.Stop();
                                     listo = 0;
