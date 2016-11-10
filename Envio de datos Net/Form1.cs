@@ -20,6 +20,7 @@ namespace Envio_de_datos_Net
         {
             InitializeComponent();
         }
+        
 
         //Direcciones de lectura PLC
         public static bool[] readcoils;
@@ -126,26 +127,42 @@ namespace Envio_de_datos_Net
         private string _temperatura;
         private string _estado;
         //DateTime Horalectura = DateTime.Now;
-       
+
+        private bool _errorPresion;
+        private bool _errorTemperatura;
         private void timer2_Tick(object sender, EventArgs e)
         {
 
            
             //seleccion de la etapa de trabajo
             try{
-               
+                if (readHoldingRegisters[PRESION] > 12)
+                {
+                    _errorPresion = true;
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    _estado = "Presión elevada";
+                }
+                else { _errorPresion = false; }
+                if (readHoldingRegisters[TEMPERATURA] > 118)
+                {
+                    _errorTemperatura = true;
+                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    _estado = "Temperatura elevada";
+                }
 
-                if (readcoils[ENPROCESO] == true && _esterelizacion == false)
+                else { _errorTemperatura = false; }
+                if (readcoils[ENPROCESO] == true && _esterelizacion == false && _errorPresion == false && _errorTemperatura == false)
                 {
                     _estado = "Precalentamiento";
                     _enProceso = true;
                     _precalentamieno = true;
+
                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
                     
                 }
                 else
                 {
-                    if (readcoils[ESTERELIZACION ] == true && _enProceso == true)
+                    if (readcoils[ESTERELIZACION] == true && _enProceso == true && _errorPresion == false && _errorTemperatura == false)
                     {
                         _estado = "Esterelizacion";
                         _precalentamieno = false;
@@ -154,7 +171,7 @@ namespace Envio_de_datos_Net
                     }
                     else
                     {
-                        if (_esterelizacion  == true && readcoils[ESTERELIZACION ] == false)
+                        if (_esterelizacion == true && readcoils[ESTERELIZACION] == false && _errorPresion == false && _errorTemperatura == false)
                         {
                             _estado = "completado";
                             _enProceso = false;
