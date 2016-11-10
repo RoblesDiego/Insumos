@@ -118,6 +118,7 @@ namespace Envio_de_datos_Net
                    
                     //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
+                    _estado = "apagado";
                 }
                 else
                 {
@@ -161,8 +162,9 @@ namespace Envio_de_datos_Net
            
             //seleccion de la etapa de trabajo
             try{
+               
 
-                if (readcoils[ENPROCESO] == true && readcoils [ESTERELIZACION] == false )
+                if (readcoils[ENPROCESO] == true && _esterelizacion == false)
                 {
                     _estado = "Precalentamiento";
                     _enProceso = true;
@@ -172,7 +174,7 @@ namespace Envio_de_datos_Net
                 }
                 else
                 {
-                    if (readcoils[ESTERELIZACION ] == true)
+                    if (readcoils[ESTERELIZACION ] == true && _enProceso == true)
                     {
                         _estado = "Esterelizacion";
                         _precalentamieno = false;
@@ -208,10 +210,17 @@ namespace Envio_de_datos_Net
                                     btnFinProceso.Enabled = false;
                                     btnGuardar.Enabled = true;
                                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
+
+
                                     Conexion_Net _ExportaraExcel = new Conexion_Net();
                                     _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
                                     this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
+                               
                                     timer2.Stop();
+
+                                    //Conexion_Net _ExportaraExcel = new Conexion_Net();
+                                    //_ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
+                                    //this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                 }
                             }
                             catch
@@ -222,7 +231,7 @@ namespace Envio_de_datos_Net
                         }
                         else 
                         {
-                        _estado = "apagado";
+                        //_estado = "apagado";
                         //lblEstado.Text = "apagado".ToString();
                         //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                         }
@@ -272,7 +281,7 @@ namespace Envio_de_datos_Net
         
         private void btnIniProceso_Click(object sender, EventArgs e)
         {
-            
+            this.dataGridView1.Rows.Clear();
             DateTime LecturaActualInicio = DateTime.Now;
             button1.Enabled = false;
             btnDesconectar.Enabled = false;

@@ -387,7 +387,7 @@
             this.btnFinProceso.Name = "btnFinProceso";
             this.btnFinProceso.Size = new System.Drawing.Size(100, 50);
             this.btnFinProceso.TabIndex = 28;
-            this.btnFinProceso.Text = "Fin de Proceso";
+            this.btnFinProceso.Text = "Fin de monitoreo";
             this.btnFinProceso.UseVisualStyleBackColor = true;
             this.btnFinProceso.Click += new System.EventHandler(this.btnFinProceso_Click);
             // 
@@ -399,7 +399,7 @@
             this.btnIniProceso.Name = "btnIniProceso";
             this.btnIniProceso.Size = new System.Drawing.Size(100, 50);
             this.btnIniProceso.TabIndex = 27;
-            this.btnIniProceso.Text = "Iniciar proceso";
+            this.btnIniProceso.Text = "Iniciar monitoreo";
             this.btnIniProceso.UseVisualStyleBackColor = true;
             this.btnIniProceso.Click += new System.EventHandler(this.btnIniProceso_Click);
             // 
