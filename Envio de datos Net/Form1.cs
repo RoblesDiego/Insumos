@@ -36,7 +36,7 @@ namespace Envio_de_datos_Net
         public bool _esterelizacion;
         public bool _completado;
         public bool _IniProceso;
-
+        public bool _LecturaAutomatica = false;
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -52,6 +52,36 @@ namespace Envio_de_datos_Net
                 btnIniProceso.Enabled = true;
                 //btnCapturar.Enabled = true;
                 button2.Enabled = false;
+
+                //if (readcoils [ENPROCESO] == true)
+                //{
+                //    _LecturaAutomatica = true;
+                //}
+                //else 
+                //{}
+                if (_LecturaAutomatica == true)
+                {
+
+                    DateTime LecturaActualInicio = DateTime.Now;
+                    button1.Enabled = false;
+                    btnDesconectar.Enabled = false;
+                    btnFinProceso.Enabled = true;
+                    btnIniProceso.Enabled = false;
+                    btnGuardar.Enabled = false;
+
+                    //_IniProceso = true;
+                    //timer2.Start();
+
+                    ////inicia proceso
+
+
+                    string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
+                    lblHoraInicio.Text = _lecturaActual.ToString();
+                    dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
+                }
+                else
+                {
+                }
 
             }
             catch
@@ -79,7 +109,7 @@ namespace Envio_de_datos_Net
             timer1.Start();
             try
             {
-                
+
 
                 //bool[] 
                     readcoils = modbusClient.ReadCoils(0, 100);
@@ -96,6 +126,29 @@ namespace Envio_de_datos_Net
                 {
                     
                 }
+                if (readcoils[ENPROCESO] == true && listo < 1)
+                {
+                    DateTime LecturaActualInicio = DateTime.Now;
+                    button1.Enabled = false;
+                    btnDesconectar.Enabled = false;
+                    btnFinProceso.Enabled = true;
+                    btnIniProceso.Enabled = false;
+                    btnGuardar.Enabled = false;
+
+                    _IniProceso = true;
+                    timer2.Start();
+                    _LecturaAutomatica = true;
+                    //inicia proceso;
+
+
+                    string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
+                    lblHoraInicio.Text = _lecturaActual.ToString();
+                    dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
+
+                    listo++;
+                }
+                else
+                { }
 
 
             }
@@ -104,6 +157,7 @@ namespace Envio_de_datos_Net
 
             }
         }
+        private int listo;
         public static bool forms_abiero = false;
         private void btnCapturar_Click(object sender, EventArgs e)
         {
@@ -201,7 +255,7 @@ namespace Envio_de_datos_Net
                                     this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                
                                     timer2.Stop();
-
+                                    listo = 0;
                                 }
                             }
                             catch
@@ -287,8 +341,9 @@ namespace Envio_de_datos_Net
             lblHoraFin.Text = _lecturaActualFin.ToString();
 
           
-
+            
             timer2.Stop();
+            listo = 0;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
