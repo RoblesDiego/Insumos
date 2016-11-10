@@ -20,7 +20,7 @@ namespace Envio_de_datos_Net
         public Graphics ControlDeImagen;
         public int NumeroLectura;
         public int PosicionGrafica;
-        ModbusClient modbusClient;
+        //ModbusClient modbusClient;
         public Capturar()
         {
             InitializeComponent();
@@ -40,8 +40,6 @@ namespace Envio_de_datos_Net
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
-            //Form1 frm = new Form1();
-            //frm.Show();
             Form1.forms_abiero = false;
             this.Close();
         }

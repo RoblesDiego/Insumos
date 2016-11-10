@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyModbus;
 using System.IO;
-//using Microsoft.Office.Interop.Excel;
+
 
 namespace Envio_de_datos_Net
 {
@@ -21,27 +21,29 @@ namespace Envio_de_datos_Net
             InitializeComponent();
         }
 
+        //Direcciones de lectura PLC
+        public static bool[] readcoils;
+        public static int[] readHoldingRegisters;
 
         public int ENPROCESO = 8;
         public int ESTERELIZACION = 50;
+        public int PRESION = 6;
+        public int TEMPERATURA = 40;
+
         public bool _enProceso;
         public bool _precalentamieno;
         public bool _esterelizacion;
         public bool _completado;
         public bool _IniProceso;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            //button1.Enabled = false;
-            //btnDesconectar.Enabled = true;
-            //btnIniProceso.Enabled = true;
             
             try
             {
+                //Prueba de conectar el PLC
                 timer1.Start();
-                //timer2.Start();
-
-                ////lo desabilite para trabajr offline
-                modbusClient = new ModbusClient("10.10.255.168", 502);
+                modbusClient = new ModbusClient("10.10.255.168", 502); //dirección estática del plc
                 modbusClient.Connect();
                 MessageBox.Show("Conexion establecida :-) ");
                 button1.Enabled = false;
@@ -49,27 +51,11 @@ namespace Envio_de_datos_Net
                 btnIniProceso.Enabled = true;
                 btnCapturar.Enabled = true;
                 button2.Enabled = false;
-                //bool[] writecoils = modbusClient.WriteSingleCoil[1];
-
-                //button1.Text = "Desconectar";
-
-                //bool[] readcoils = modbusClient.ReadCoils(0, 10);
-                //int[] readHoldingRegisters = modbusClient.ReadHoldingRegisters(0, 10);
-
-
-
-                //for (int i = 0; i < readcoils.Length; i++)
-                //    LM0.Text = readcoils[0].ToString();
-
-                //for (int i = 0; i < readHoldingRegisters.Length; i++)
-                //    label9.Text = readHoldingRegisters[0].ToString();
-                //    label8.Text = readHoldingRegisters[8].ToString();
-                //otra prueba github
 
             }
             catch
             {
-                //MessageBox.Show("Se a producido un error . . . :'(");
+                //En caso de no conectar saltan los siguientes mensajes
                 MessageBox.Show("No se pudo conectar", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 MessageBox.Show("Revise que el PLC este conectado correctamente", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
@@ -86,18 +72,13 @@ namespace Envio_de_datos_Net
         {
             this.Close();
         }
-        public static bool [] readcoils;
-        public static int[] readHoldingRegisters;
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Start();
             try
             {
-                //lo desabilite para trabajr offline
-                //modbusClient = new ModbusClient("10.10.255.168", 502);
-                //modbusClient.Connect();
-                //MessageBox.Show("Conexion establecida . . . ");
-                //button1.Text = "Desconectar";
+                
 
                 //bool[] 
                     readcoils = modbusClient.ReadCoils(0, 100);
@@ -116,13 +97,12 @@ namespace Envio_de_datos_Net
                 if (_IniProceso  == false)
                 {
                    
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verde2.bmp");
                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                     _estado = "apagado";
                 }
                 else
                 {
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\gris.bmp");
+                    
                 }
 
 
@@ -170,7 +150,7 @@ namespace Envio_de_datos_Net
                     _enProceso = true;
                     _precalentamieno = true;
                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
-                    //lblEstado.Text = "Precalentamiento".ToString();
+                    
                 }
                 else
                 {
@@ -180,7 +160,6 @@ namespace Envio_de_datos_Net
                         _precalentamieno = false;
                         _esterelizacion = true;
                         pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
-                        //lblEstado.Text = "Esterelizacion".ToString();
                     }
                     else
                     {
@@ -190,10 +169,8 @@ namespace Envio_de_datos_Net
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
-                            //lblEstado.Text = "completado".ToString();
-                          
+                                                   
 
-                            //tratando de deteenr y capturar la hora
                             try
                             {
                                 if (_completado == true)
@@ -209,18 +186,14 @@ namespace Envio_de_datos_Net
                                     btnDesconectar.Enabled = true;
                                     btnFinProceso.Enabled = false;
                                     btnGuardar.Enabled = true;
+                                    //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
                                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
-
-
                                     Conexion_Net _ExportaraExcel = new Conexion_Net();
                                     _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
                                     this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                
                                     timer2.Stop();
 
-                                    //Conexion_Net _ExportaraExcel = new Conexion_Net();
-                                    //_ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
-                                    //this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                 }
                             }
                             catch
@@ -231,9 +204,7 @@ namespace Envio_de_datos_Net
                         }
                         else 
                         {
-                        //_estado = "apagado";
-                        //lblEstado.Text = "apagado".ToString();
-                        //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
+                        
                         }
 
                     }
@@ -243,14 +214,12 @@ namespace Envio_de_datos_Net
                 _ticks++;
                 label13.Text = _ticks.ToString();
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
-                _presion = readHoldingRegisters[6].ToString();
-                _temperatura = readHoldingRegisters[40].ToString();
-                //dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Estado");
-                //timer2.Start();
-                if (_ticks > 0) //guarda datos cada 5 seg, osea 1seg+ que lo que se marca
+                _presion = readHoldingRegisters[PRESION].ToString();
+                _temperatura = readHoldingRegisters[TEMPERATURA].ToString();             
+                if (_ticks > 0) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
                     dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
-                    //_ticks = 0;
+                    
                 }
 
             }
@@ -276,18 +245,17 @@ namespace Envio_de_datos_Net
             
 
         }
-
-        //DateTime LecturaActualInicio = DateTime.Now;
-        
+                
         private void btnIniProceso_Click(object sender, EventArgs e)
         {
-            this.dataGridView1.Rows.Clear();
+            //this.dataGridView1.Rows.Clear();//limpia antes de leer nuevos datos
             DateTime LecturaActualInicio = DateTime.Now;
             button1.Enabled = false;
             btnDesconectar.Enabled = false;
             btnFinProceso.Enabled = true;
             btnIniProceso.Enabled = false;
             btnGuardar.Enabled = false;
+
             //inicia proceso
             _IniProceso = true;
             timer2.Start();
@@ -323,31 +291,6 @@ namespace Envio_de_datos_Net
             this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel.
         }
 
-        //public void exportarExcel (DataGridView _tabla)
-        //{
-        //    Microsoft.Office.Interop.Excel.Application _excel = new Microsoft.Office.Interop.Excel.Application();
-        //    _excel.Application.Workbooks.Add(true);
-        //    int _IndiceColumna = 0;
 
-        //    foreach (DataGridViewColumn col in _tabla.Columns) //columnas
-        //    {
-        //        _IndiceColumna++;
-        //        _excel.Cells[1, _IndiceColumna] = col.Name;
-        //    }
-        //    int _IndiceFila = 0;
-
-        //    foreach (DataGridView row in _tabla.Rows) //Fila
-        //    {
-        //        _IndiceFila++;
-        //        _IndiceColumna = 0;
-
-        //        foreach (DataGridView col in _tabla.Columns)
-        //        {
-        //            _IndiceColumna++;
-        //            _excel.Cells[_IndiceFila + 1, _IndiceColumna] =  _excel.Cells[col.Name].value;
-        //        }
-        //    }
-        //    _excel.Visible = true;
-        //} 
     }
 }
