@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Documentos\Programación\ejecutable\</PublishUrl>
+    <PublishUrl>D:\Documentos\Programación\ejecutable2\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>terror10_42723.ico</ApplicationIcon>
+    <ApplicationIcon>pokemon_go_play_game_charcter_icon-icons.com_69165.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>008EFE183A689C77BEA0E6584A7760D40CCAB389</ManifestCertificateThumbprint>
@@ -152,6 +152,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pokemon_go_play_game_charcter_icon-icons.com_69165.ico" />
     <Content Include="terror10_42723.ico" />
   </ItemGroup>
   <ItemGroup>
