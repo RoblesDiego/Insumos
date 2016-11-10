@@ -208,7 +208,9 @@ namespace Envio_de_datos_Net
                                     btnFinProceso.Enabled = false;
                                     btnGuardar.Enabled = true;
                                     pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
-
+                                    Conexion_Net _ExportaraExcel = new Conexion_Net();
+                                    _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
+                                    this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                     timer2.Stop();
                                 }
                             }
@@ -309,15 +311,7 @@ namespace Envio_de_datos_Net
         {
             Conexion_Net _ExportaraExcel = new Conexion_Net();
             _ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
-            //if (this.dataGridView1.DataSource != null)
-            //{
-            //    this.dataGridView1.DataSource = null;
-            //}
-            //else
-            //{
-            //    this.dataGridView1.Rows.Clear();
-            //}
-            this.dataGridView1.Rows.Clear();
+            this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel.
         }
 
         //public void exportarExcel (DataGridView _tabla)
