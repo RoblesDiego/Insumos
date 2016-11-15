@@ -37,6 +37,10 @@ namespace Envio_de_datos_Net
         public bool _completado;
         public bool _IniProceso;
         public bool _LecturaAutomatica = false;
+
+        //para datagridview2
+        public int _procesosCompletados;
+        public string _HoraInicio;
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -255,6 +259,9 @@ namespace Envio_de_datos_Net
                                     btnGuardar.Enabled = true;
                                     //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
                                     //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
+                                    _procesosCompletados++;
+                                    _HoraInicio = lblHoraInicio.Text.ToString();
+                                    dataGridView2.Rows.Add(_procesosCompletados, "", _presion, _temperatura, _HoraInicio, _estado);
                                     pictureBox1.Image = Image.FromFile(@"azulText.bmp");
                                     
                                     //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
@@ -365,6 +372,11 @@ namespace Envio_de_datos_Net
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
 
