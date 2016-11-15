@@ -333,6 +333,7 @@ namespace Envio_de_datos_Net
             lblHoraInicio.Text = _lecturaActual.ToString();
             dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
             
+            
         }
 
         private void btnFinProceso_Click(object sender, EventArgs e)

@@ -312,7 +312,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.ClientSize = new System.Drawing.Size(589, 482);
+            this.ClientSize = new System.Drawing.Size(1278, 482);
             this.ControlBox = false;
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnGuardar);
