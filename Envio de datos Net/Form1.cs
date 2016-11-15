@@ -119,7 +119,8 @@ namespace Envio_de_datos_Net
                 if (_IniProceso  == false)
                 {
                    
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
+                    pictureBox1.Image = Image.FromFile(@"grisText.bmp");
                     _estado = "apagado";
                 }
                 else
@@ -193,14 +194,16 @@ namespace Envio_de_datos_Net
                 if (readHoldingRegisters[PRESION] > 12)
                 {
                     _errorPresion = true;
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
                     _estado = "Presión elevada";
                 }
                 else { _errorPresion = false; }
                 if (readHoldingRegisters[TEMPERATURA] > 118)
                 {
                     _errorTemperatura = true;
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
+                    pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
                     _estado = "Temperatura elevada";
                 }
 
@@ -211,7 +214,8 @@ namespace Envio_de_datos_Net
                     _enProceso = true;
                     _precalentamieno = true;
 
-                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
+                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
+                    pictureBox1.Image = Image.FromFile(@"verdeText.bmp");
                     
                 }
                 else
@@ -221,7 +225,8 @@ namespace Envio_de_datos_Net
                         _estado = "Esterelizacion";
                         _precalentamieno = false;
                         _esterelizacion = true;
-                        pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
+                        //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
+                        pictureBox1.Image = Image.FromFile(@"amarilloText.bmp");
                     }
                     else
                     {
@@ -249,7 +254,10 @@ namespace Envio_de_datos_Net
                                     btnFinProceso.Enabled = false;
                                     btnGuardar.Enabled = true;
                                     //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
-                                    pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
+                                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
+                                    pictureBox1.Image = Image.FromFile(@"azulText.bmp");
+                                    
+                                    //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
                                     //Conexion_Net _ExportaraExcel = new Conexion_Net();
                                     //_ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
                                     //this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel

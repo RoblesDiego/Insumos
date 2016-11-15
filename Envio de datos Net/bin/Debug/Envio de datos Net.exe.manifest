@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Envio de datos Net.exe" size="168448">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Envio de datos Net.exe" size="162304">
       <assemblyIdentity name="Envio de datos Net" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rrJpolmnaYiIuRbAy/M6aTGNoqfREBhArWLbdT2gUcI=</dsig:DigestValue>
+        <dsig:DigestValue>lKMUuv9e69uEeBe8reJrphN/I7tAzO0x0CAQ1ZOV1uY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
