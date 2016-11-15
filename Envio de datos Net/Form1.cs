@@ -28,8 +28,8 @@ namespace Envio_de_datos_Net
 
         public int ENPROCESO = 8;
         public int ESTERELIZACION = 50;
-        public int PRESION = 6;
-        public int TEMPERATURA = 40;
+        public int PRESION = 15;
+        public int TEMPERATURA = 14;
 
         public bool _enProceso;
         public bool _precalentamieno;
@@ -41,6 +41,9 @@ namespace Envio_de_datos_Net
         //para datagridview2
         public int _procesosCompletados;
         public string _HoraInicio;
+        public string _HoraFin;
+        public int CONSIGNATEMPERATURA = 40;
+        public int CONSIGNAPRESION = 64;
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -261,7 +264,8 @@ namespace Envio_de_datos_Net
                                     //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
                                     _procesosCompletados++;
                                     _HoraInicio = lblHoraInicio.Text.ToString();
-                                    dataGridView2.Rows.Add(_procesosCompletados, "", _presion, _temperatura, _HoraInicio, _estado);
+                                    _HoraFin = lblHoraFin.Text.ToString();
+                                    dataGridView2.Rows.Add(_procesosCompletados, "", readHoldingRegisters[CONSIGNAPRESION], readHoldingRegisters[CONSIGNATEMPERATURA], _HoraInicio,_HoraFin, _estado);
                                     pictureBox1.Image = Image.FromFile(@"azulText.bmp");
                                     
                                     //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
