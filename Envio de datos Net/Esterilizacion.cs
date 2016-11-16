@@ -33,11 +33,12 @@ namespace SaveToMySQL
         {
             string CommandText = string.Format("Insert into Esterilizacion(noEsterilizacion, " +
                                                "tipoPresentacion, presion, temperatura, horaInicio, horaFinal, " +
-                                               "tiempoCalentamiento, tiempoEsterilizado, Observacion, RegistroLote_idRegistroLote) " +
-                                               "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}');", 
-                                               this.noEsterilizacion, this.tipoPresentacion, this.presion, this.temperatura,
-                                               this.horaInicio, this.horaFinal, this.tiempoCalentamiento, this.tiempoEsterilizado,
-                                               this.observacion, this.registroLote.id);
+                                               "tiempoCalentamiento, tiempoEsterilizado, Observacion) " +
+                                               "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
+                                               (this.noEsterilizacion == null ? "0" : this.noEsterilizacion), (this.tipoPresentacion == null ? "0" : this.tipoPresentacion), 
+                                               this.presion, this.temperatura,
+                                               this.horaInicio.ToLongTimeString(), this.horaFinal.ToLongTimeString(), this.tiempoCalentamiento, this.tiempoEsterilizado,
+                                               (this.observacion == null ? "N/A" : this.observacion));
             Console.WriteLine(CommandText);
             return ServidorDB.insertar(CommandText);
         }

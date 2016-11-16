@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyModbus;
 using System.IO;
+using SaveToMySQL;
 
 
 namespace Envio_de_datos_Net
@@ -45,47 +46,49 @@ namespace Envio_de_datos_Net
         public int CONSIGNATEMPERATURA = 40;
         public int CONSIGNAPRESION = 64;
         public int CONSIGNATIEMPO = 101;
-        private void button1_Click(object sender, EventArgs e)
+        private int listo;
+        public static bool forms_abiero = false;
+
+        private int _ticks;
+        private string _presion;
+        private string _temperatura;
+        private string _estado;
+        //DateTime Horalectura = DateTime.Now;
+
+        private bool _errorPresion;
+        private bool _errorTemperatura;
+
+        private void conectarModbus()
         {
-            
+            modbusClient = new ModbusClient("10.10.255.168", 502); //dirección estática del plc
+            modbusClient.Connect();
+            MessageBox.Show("Conexión establecida.");
+            button1.Enabled = false;
+            btnDesconectar.Enabled = true;
+            btnIniProceso.Enabled = true;
+            button2.Enabled = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {        
             try
             {
+                this.conectarModbus();
                 timer1.Start();
-                modbusClient = new ModbusClient("10.10.255.168", 502); //dirección estática del plc
-                modbusClient.Connect();
-                MessageBox.Show("Conexión establecida.");
-                button1.Enabled = false;
-                btnDesconectar.Enabled = true;
-                btnIniProceso.Enabled = true;
-                //btnCapturar.Enabled = true;
-                button2.Enabled = false;
-
                 if (_LecturaAutomatica == true)
                 {
-
                     DateTime LecturaActualInicio = DateTime.Now;
                     button1.Enabled = false;
                     btnDesconectar.Enabled = false;
                     btnFinProceso.Enabled = true;
                     btnIniProceso.Enabled = false;
                     btnGuardar.Enabled = false;
-
-                    //_IniProceso = true;
-                    //timer2.Start();
-
-                    ////inicia proceso
-
+                    //Iinicia Proceso
                     string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
                     lblHoraInicio.Text = _lecturaActual.ToString();
-                    dataGridView1.Rows.Clear();
-                    dataGridView1.Refresh();
+                    this.limpiarTabla();
                     _ticks = 0;
-                    //dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
                 }
-                else
-                {
-                }
-
             }
             catch
             {
@@ -95,12 +98,6 @@ namespace Envio_de_datos_Net
 
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -112,8 +109,6 @@ namespace Envio_de_datos_Net
             timer1.Start();
             try
             {
-
-
                 //bool[] 
                     readcoils = modbusClient.ReadCoils(0, 100);
                 //int[] 
@@ -121,32 +116,21 @@ namespace Envio_de_datos_Net
 
                 if (_IniProceso  == false)
                 {
-                   
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\grisText.bmp");
                     pictureBox1.Image = Image.FromFile(@"grisText.bmp");
                     _estado = "apagado";
-                }
-                else
-                {
-                    
                 }
                 if (readcoils[ENPROCESO] == true && listo < 1)
                 {
                     this.iniciarCaptura();
                     listo++;
                 }
-                else
-                { }
-
-
             }
             catch
             {
 
             }
         }
-        private int listo;
-        public static bool forms_abiero = false;
+
         private void btnCapturar_Click(object sender, EventArgs e)
         {
            
@@ -164,26 +148,15 @@ namespace Envio_de_datos_Net
             }
             
         }
-        private int _ticks;
-        private string _presion;
-        private string _temperatura;
-        private string _estado;
-        //DateTime Horalectura = DateTime.Now;
-
-        private bool _errorPresion;
-        private bool _errorTemperatura;
+        
         private void timer2_Tick(object sender, EventArgs e)
-        {
-
-           
+        {  
             //seleccion de la etapa de trabajo
-            try{
                 lblPresionEstablecida.Text = readHoldingRegisters[CONSIGNAPRESION].ToString();
                 lblTemperaturaEstablecida.Text = readHoldingRegisters[CONSIGNATEMPERATURA].ToString();
                 if (readHoldingRegisters[PRESION] > 12)
                 {
                     _errorPresion = true;
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
                     pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
                     _estado = "Presión elevada";
                 }
@@ -191,82 +164,65 @@ namespace Envio_de_datos_Net
                 if (readHoldingRegisters[TEMPERATURA] > 117)
                 {
                     _errorTemperatura = true;
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\rojoError.bmp");
                     pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
                     _estado = "Temperatura elevada";
                 }
 
                 else { _errorTemperatura = false; }
-                if (readcoils[ENPROCESO] == true && _esterelizacion == false && _errorPresion == false && _errorTemperatura == false)
+                if (readcoils[ENPROCESO] && !_esterelizacion && !_errorPresion && !_errorTemperatura)
                 {
                     _estado = "Calentamiento";
                     _enProceso = true;
                     _precalentamieno = true;
-
-                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\verdeText.bmp");
                     pictureBox1.Image = Image.FromFile(@"verdeText.bmp");
-                    
                 }
                 else
                 {
-                    if (readcoils[ESTERELIZACION] == true && _enProceso == true && _errorPresion == false && _errorTemperatura == false)
+                    if (readcoils[ESTERELIZACION] && _enProceso && !_errorPresion && !_errorTemperatura)
                     {
                         _estado = "Esterilizacion";
                         _precalentamieno = false;
                         _esterelizacion = true;
-                        //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
                         pictureBox1.Image = Image.FromFile(@"amarilloText.bmp");
-                    //_tiempocalentamiento = DateTime.Now.Subtract(this.horaInicio);
-                    //this.lblTiempoCalentamiento.Text = _tiempocalentamiento.ToString("mm:ss");
-                       
                     }
                     else
                     { 
-                        if (_esterelizacion == true && readcoils[ESTERELIZACION] == false  &&_precalentamieno == false && _errorPresion == false && _errorTemperatura == false)
+                        if (_esterelizacion && !readcoils[ESTERELIZACION] && !_precalentamieno && !_errorPresion && !_errorTemperatura)
                         {
                             
                             _estado = "Completado";
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
-                            
-                            try
-                            {
+                           
                                 if (_completado == true && _esterelizacion == false)
                                 {
-                                    DateTime _LecturaActualFin = DateTime.Now;
+                                    _LecturaActualFin = DateTime.Now;
 
                                     string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
-                                    //int _tiempoPrecalentaminto = readHoldingRegisters[CONSIGNATIEMPO];
                                     lblHoraFin.Text = _lecturaActualFin.ToString();
-                                 //_tiempoesterilizacion = DateTime.Now.Subtract(this.horaInicio).Subtract(this._tiempocalentamiento);
-                                 //this.lblTiempoEsterilizacion.Text = _tiempoesterilizacion.ToString("mm:ss");
                                     btnIniProceso.Enabled = false;
                                     btnIniProceso.Enabled = true;
                                     btnDesconectar.Enabled = true;
                                     btnFinProceso.Enabled = false;
                                     btnGuardar.Enabled = true;
                                     //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
-                                    //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
 
-                                    //_procesosCompletados++;
                                     _HoraInicio = lblHoraInicio.Text.ToString();
                                     _HoraFin = lblHoraFin.Text.ToString();
                                     pictureBox1.Image = Image.FromFile(@"azulText.bmp");
                                     
                                     //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
                                     //_ExportaraExcel.ExportarDataGridViewExcel(dataGridView1);
-                                    //this.dataGridView1.Rows.Clear(); //Por fin!!! Borra datos luego de guardarlo a excel
                                     listo = 0;
-                                    timer2.Stop();
+                                    this.guardarDB();
+                                    try
+                                    {
+                                        timer2.Stop();
+                                    }
+                                    catch { }
                                     
                                 }
-                            }
-                            catch
-                            {
-                            }
-
-
                         }
 
                     }
@@ -274,6 +230,7 @@ namespace Envio_de_datos_Net
 
                 DateTime Horalectura = DateTime.Now;
                 _ticks++;
+                this.incConteo(_precalentamieno);
                 label13.Text = _ticks.ToString();
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[PRESION].ToString();
@@ -282,17 +239,51 @@ namespace Envio_de_datos_Net
                 if (_ticks > 0 ) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
                     dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
-                 //this.lblConteo.Text = Horalectura.Subtract(this.horaInicio).Minutes.ToString() + ":" + Horalectura.Subtract(this.horaInicio).Seconds.ToString();
                 }
-
-            }
-            catch { }
-
         }
 
-        private void btnDesconectar_Click(object sender, EventArgs e)
+        private bool guardarDB()
         {
+            Esterilizacion esterilizacion = new Esterilizacion();
+            esterilizacion.horaFinal = this._LecturaActualFin;
+            esterilizacion.horaInicio = this.LecturaActualInicio;
+            esterilizacion.presion = int.Parse(this.lblPresionEstablecida.Text);
+            esterilizacion.temperatura = int.Parse(this.lblTemperaturaEstablecida.Text);
+            esterilizacion.tiempoCalentamiento = this.conteoMin;
+            esterilizacion.tiempoEsterilizado = this.conteoEMin;
+            if (esterilizacion.guardar())
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void incConteo(bool calentamiento)
+        {
+            if (calentamiento)
+            {
+                this.conteoSeg++;
+                if (this.conteoSeg >= 60)
+                {
+                    this.conteoMin++;
+                    this.conteoSeg = 0;
+                }
+                this.lblTCalentamiento.Text = this.conteoMin.ToString() + ":" + this.conteoSeg.ToString();
+            }
+            if(_esterelizacion)
+            {
+                this.conteoESeg++;
+                if (this.conteoESeg >= 60)
+                {
+                    this.conteoEMin++;
+                    this.conteoESeg = 0;
+                }
+                this.lblTEsterilizacion.Text = this.conteoEMin.ToString() + ":" + this.conteoESeg.ToString();
+            }
             
+        }
+        private void btnDesconectar_Click(object sender, EventArgs e)
+        {        
                 btnDesconectar.Enabled = false;
                 button1.Enabled = true;
                 btnIniProceso.Enabled = false;
@@ -301,7 +292,6 @@ namespace Envio_de_datos_Net
                 modbusClient.Disconnect();
                 MessageBox.Show("Conexion cerrada");
                 timer1.Stop();           
-
         }
 
 
@@ -320,7 +310,7 @@ namespace Envio_de_datos_Net
         {
             this.limpiarTabla();
             _ticks = 0;
-            DateTime LecturaActualInicio = DateTime.Now;
+            LecturaActualInicio = DateTime.Now;
             button1.Enabled = false;
             btnDesconectar.Enabled = false;
             btnFinProceso.Enabled = true;
@@ -333,6 +323,10 @@ namespace Envio_de_datos_Net
             string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
             lblHoraInicio.Text = _lecturaActual.ToString();
 
+            this.conteoEMin = 0;
+            this.conteoESeg = 0;
+            this.conteoMin = 0;
+            this.conteoSeg = 0;
             timer2.Start();
             //this.horaInicio = LecturaActualInicio;
         }
@@ -349,8 +343,6 @@ namespace Envio_de_datos_Net
             string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
             lblHoraFin.Text = _lecturaActualFin.ToString();
 
-          
-            
             timer2.Stop();
             listo = 0;
         }
@@ -367,21 +359,16 @@ namespace Envio_de_datos_Net
             WindowState = FormWindowState.Minimized;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        public int conteoSeg { get; set; }
 
-        }
+        public int conteoMin { get; set; }
 
+        public int conteoESeg { get; set; }
 
+        public int conteoEMin { get; set; }
 
-        //public DateTime _conteo_tiempo { get; set; }
+        public DateTime _LecturaActualFin { get; set; }
 
-        //public DateTime dtHoraInicio { get; set; }
-
-        //public DateTime horaInicio { get; set; }
-
-        //public TimeSpan _tiempocalentamiento { get; set; }
-
-        //public TimeSpan _tiempoesterilizacion { get; set; }
+        public DateTime LecturaActualInicio { get; set; }
     }
 }

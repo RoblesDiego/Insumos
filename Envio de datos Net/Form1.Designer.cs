@@ -59,13 +59,11 @@
             this.lblPresionEstablecida = new System.Windows.Forms.Label();
             this.lblTemperaturaEstablecida = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblConteo = new System.Windows.Forms.Label();
+            this.lblTCalentamiento = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblTiempoCalentamiento = new System.Windows.Forms.Label();
-            this.lblTiempoEsterilizacion = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblTEsterilizacion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -115,7 +113,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(449, 114);
+            this.label11.Location = new System.Drawing.Point(476, 114);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(208, 25);
             this.label11.TabIndex = 19;
@@ -202,7 +200,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(179, 173);
+            this.label13.Location = new System.Drawing.Point(127, 164);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 25);
             this.label13.TabIndex = 23;
@@ -212,7 +210,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(240, 114);
+            this.label14.Location = new System.Drawing.Point(15, 137);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(101, 25);
             this.label14.TabIndex = 24;
@@ -222,7 +220,7 @@
             // 
             this.lblHoraInicio.AutoSize = true;
             this.lblHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraInicio.Location = new System.Drawing.Point(15, 139);
+            this.lblHoraInicio.Location = new System.Drawing.Point(127, 114);
             this.lblHoraInicio.Name = "lblHoraInicio";
             this.lblHoraInicio.Size = new System.Drawing.Size(98, 25);
             this.lblHoraInicio.TabIndex = 25;
@@ -232,7 +230,7 @@
             // 
             this.lblHoraFin.AutoSize = true;
             this.lblHoraFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoraFin.Location = new System.Drawing.Point(240, 139);
+            this.lblHoraFin.Location = new System.Drawing.Point(127, 139);
             this.lblHoraFin.Name = "lblHoraFin";
             this.lblHoraFin.Size = new System.Drawing.Size(98, 25);
             this.lblHoraFin.TabIndex = 26;
@@ -267,7 +265,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(347, 137);
+            this.pictureBox1.Location = new System.Drawing.Point(679, 61);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(87, 77);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -278,17 +276,17 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(15, 173);
+            this.label15.Location = new System.Drawing.Point(15, 164);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(172, 25);
+            this.label15.Size = new System.Drawing.Size(109, 25);
             this.label15.TabIndex = 30;
-            this.label15.Text = "Registros leídos:";
+            this.label15.Text = "Registros:";
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(367, 121);
+            this.lblEstado.Location = new System.Drawing.Point(704, 34);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(46, 13);
             this.lblEstado.TabIndex = 31;
@@ -310,6 +308,8 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.lblEstado);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(5, 210);
             this.groupBox1.Name = "groupBox1";
@@ -322,7 +322,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(449, 139);
+            this.label1.Location = new System.Drawing.Point(476, 164);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(258, 25);
             this.label1.TabIndex = 36;
@@ -332,7 +332,7 @@
             // 
             this.lblPresionEstablecida.AutoSize = true;
             this.lblPresionEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPresionEstablecida.Location = new System.Drawing.Point(652, 114);
+            this.lblPresionEstablecida.Location = new System.Drawing.Point(740, 114);
             this.lblPresionEstablecida.Name = "lblPresionEstablecida";
             this.lblPresionEstablecida.Size = new System.Drawing.Size(36, 25);
             this.lblPresionEstablecida.TabIndex = 37;
@@ -342,7 +342,7 @@
             // 
             this.lblTemperaturaEstablecida.AutoSize = true;
             this.lblTemperaturaEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperaturaEstablecida.Location = new System.Drawing.Point(703, 139);
+            this.lblTemperaturaEstablecida.Location = new System.Drawing.Point(740, 164);
             this.lblTemperaturaEstablecida.Name = "lblTemperaturaEstablecida";
             this.lblTemperaturaEstablecida.Size = new System.Drawing.Size(36, 25);
             this.lblTemperaturaEstablecida.TabIndex = 38;
@@ -359,25 +359,25 @@
             this.pictureBox2.TabIndex = 39;
             this.pictureBox2.TabStop = false;
             // 
-            // lblConteo
+            // lblTCalentamiento
             // 
-            this.lblConteo.AutoSize = true;
-            this.lblConteo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConteo.Location = new System.Drawing.Point(136, 139);
-            this.lblConteo.Name = "lblConteo";
-            this.lblConteo.Size = new System.Drawing.Size(98, 25);
-            this.lblConteo.TabIndex = 40;
-            this.lblConteo.Text = "##:##:##";
+            this.lblTCalentamiento.AutoSize = true;
+            this.lblTCalentamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTCalentamiento.Location = new System.Drawing.Point(302, 139);
+            this.lblTCalentamiento.Name = "lblTCalentamiento";
+            this.lblTCalentamiento.Size = new System.Drawing.Size(98, 25);
+            this.lblTCalentamiento.TabIndex = 40;
+            this.lblTCalentamiento.Text = "##:##:##";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(136, 114);
+            this.label3.Location = new System.Drawing.Point(240, 114);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 25);
+            this.label3.Size = new System.Drawing.Size(229, 25);
             this.label3.TabIndex = 41;
-            this.label3.Text = "Conteo:";
+            this.label3.Text = "Tiempo Calentamiento";
             // 
             // btnMinimizar
             // 
@@ -393,45 +393,25 @@
             this.btnMinimizar.Text = "-";
             this.btnMinimizar.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // label5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(449, 164);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(236, 25);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "Tiempo Calentamiento:";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(244, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(218, 25);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Tiempo Esterilizacion";
             // 
-            // label4
+            // lblTEsterilizacion
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(449, 189);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(209, 25);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "Tiempo Esterilizado:";
-            // 
-            // lblTiempoCalentamiento
-            // 
-            this.lblTiempoCalentamiento.AutoSize = true;
-            this.lblTiempoCalentamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiempoCalentamiento.Location = new System.Drawing.Point(680, 164);
-            this.lblTiempoCalentamiento.Name = "lblTiempoCalentamiento";
-            this.lblTiempoCalentamiento.Size = new System.Drawing.Size(98, 25);
-            this.lblTiempoCalentamiento.TabIndex = 45;
-            this.lblTiempoCalentamiento.Text = "##:##:##";
-            // 
-            // lblTiempoEsterilizacion
-            // 
-            this.lblTiempoEsterilizacion.AutoSize = true;
-            this.lblTiempoEsterilizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiempoEsterilizacion.Location = new System.Drawing.Point(652, 189);
-            this.lblTiempoEsterilizacion.Name = "lblTiempoEsterilizacion";
-            this.lblTiempoEsterilizacion.Size = new System.Drawing.Size(98, 25);
-            this.lblTiempoEsterilizacion.TabIndex = 46;
-            this.lblTiempoEsterilizacion.Text = "##:##:##";
+            this.lblTEsterilizacion.AutoSize = true;
+            this.lblTEsterilizacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTEsterilizacion.Location = new System.Drawing.Point(302, 189);
+            this.lblTEsterilizacion.Name = "lblTEsterilizacion";
+            this.lblTEsterilizacion.Size = new System.Drawing.Size(98, 25);
+            this.lblTEsterilizacion.TabIndex = 48;
+            this.lblTEsterilizacion.Text = "##:##:##";
             // 
             // Form1
             // 
@@ -441,21 +421,17 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(813, 507);
             this.ControlBox = false;
-            this.Controls.Add(this.lblTiempoEsterilizacion);
-            this.Controls.Add(this.lblTiempoCalentamiento);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTEsterilizacion);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblConteo);
+            this.Controls.Add(this.lblTCalentamiento);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblTemperaturaEstablecida);
             this.Controls.Add(this.lblPresionEstablecida);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFinProceso);
             this.Controls.Add(this.btnIniProceso);
             this.Controls.Add(this.lblHoraFin);
@@ -473,10 +449,10 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Control de Procesos";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -514,13 +490,11 @@
         private System.Windows.Forms.Label lblPresionEstablecida;
         private System.Windows.Forms.Label lblTemperaturaEstablecida;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblConteo;
+        private System.Windows.Forms.Label lblTCalentamiento;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnMinimizar;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblTiempoCalentamiento;
-        private System.Windows.Forms.Label lblTiempoEsterilizacion;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTEsterilizacion;
     }
 }
 
