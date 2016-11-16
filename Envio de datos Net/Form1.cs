@@ -85,6 +85,7 @@ namespace Envio_de_datos_Net
 
                     string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
                     lblHoraInicio.Text = _lecturaActual.ToString();
+           
                     dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
                 }
                 else
@@ -149,11 +150,10 @@ namespace Envio_de_datos_Net
                     _LecturaAutomatica = true;
                     //inicia proceso;
 
-                    
                     string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
                     lblHoraInicio.Text = _lecturaActual.ToString();
+                    this.horaInicio = LecturaActualInicio;
                     dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
-
                     listo++;
                 }
                 else
@@ -220,7 +220,7 @@ namespace Envio_de_datos_Net
                 else { _errorTemperatura = false; }
                 if (readcoils[ENPROCESO] == true && _esterelizacion == false && _errorPresion == false && _errorTemperatura == false)
                 {
-                    _estado = "Precalentamiento";
+                    _estado = "Calentamiento";
                     _enProceso = true;
                     _precalentamieno = true;
 
@@ -232,7 +232,9 @@ namespace Envio_de_datos_Net
                 {
                     if (readcoils[ESTERELIZACION] == true && _enProceso == true && _errorPresion == false && _errorTemperatura == false)
                     {
-                        _estado = "Esterelizacion";
+                        _tiempocalentamiento = DateTime.Now.Subtract(this.horaInicio);
+                        this.lblTiempoCalentamiento.Text = _tiempocalentamiento.ToString("mm:ss");
+                        _estado = "Esterilizacion";
                         _precalentamieno = false;
                         _esterelizacion = true;
                         //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\amarilloText.bmp");
@@ -242,12 +244,12 @@ namespace Envio_de_datos_Net
                     {
                         if (_esterelizacion == true && readcoils[ESTERELIZACION] == false && _errorPresion == false && _errorTemperatura == false)
                         {
-                            _estado = "completado";
+                            
+                            _estado = "Completado";
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
-                                                   
-
+                            
                             try
                             {
                                 if (_completado == true)
@@ -257,7 +259,8 @@ namespace Envio_de_datos_Net
                                     string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
                                     //int _tiempoPrecalentaminto = readHoldingRegisters[CONSIGNATIEMPO];
                                     lblHoraFin.Text = _lecturaActualFin.ToString();
-
+                                    _tiempoesterilizacion = DateTime.Now.Subtract(this.horaInicio).Subtract(this._tiempocalentamiento);
+                                    this.lblTiempoEsterilizacion.Text = _tiempoesterilizacion.ToString("mm:ss");
                                     btnIniProceso.Enabled = false;
                                     btnIniProceso.Enabled = true;
                                     btnDesconectar.Enabled = true;
@@ -269,7 +272,6 @@ namespace Envio_de_datos_Net
                                     _procesosCompletados++;
                                     _HoraInicio = lblHoraInicio.Text.ToString();
                                     _HoraFin = lblHoraFin.Text.ToString();
-                                    dataGridView2.Rows.Add(_procesosCompletados, "", readHoldingRegisters[CONSIGNAPRESION], readHoldingRegisters[CONSIGNATEMPERATURA], _HoraInicio, _HoraFin);//, "", "", _tiempoPrecalentaminto);
                                     pictureBox1.Image = Image.FromFile(@"azulText.bmp");
                                     
                                     //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
@@ -287,10 +289,6 @@ namespace Envio_de_datos_Net
 
 
                         }
-                        else 
-                        {
-                        
-                        }
 
                     }
                 }
@@ -301,10 +299,11 @@ namespace Envio_de_datos_Net
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[PRESION].ToString();
                 _temperatura = readHoldingRegisters[TEMPERATURA].ToString();             
+                
                 if (_ticks > 0 ) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
                     dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
-                    
+                    this.lblConteo.Text = Horalectura.Subtract(this.horaInicio).Minutes.ToString() + ":" + Horalectura.Subtract(this.horaInicio).Seconds.ToString();
                 }
 
             }
@@ -343,6 +342,7 @@ namespace Envio_de_datos_Net
             //inicia proceso
             _IniProceso = true;
             timer2.Start();
+            this.horaInicio = LecturaActualInicio;
 
             string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
             lblHoraInicio.Text = _lecturaActual.ToString();
@@ -388,5 +388,15 @@ namespace Envio_de_datos_Net
         }
 
 
+
+        public DateTime _conteo_tiempo { get; set; }
+
+        public DateTime dtHoraInicio { get; set; }
+
+        public DateTime horaInicio { get; set; }
+
+        public TimeSpan _tiempocalentamiento { get; set; }
+
+        public TimeSpan _tiempoesterilizacion { get; set; }
     }
 }

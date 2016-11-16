@@ -24,3 +24,19 @@ D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.application
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe.manifest
 D:\Documentos\Programación\Programa Insumos Bolivia\Version WindowsForm\Version1\Envio de datos Net\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.application
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe.config
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.ResolveComReference.cache
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.pdb
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csprojResolveAssemblyReference.cache
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Capturar.resources
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Form1.resources
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Properties.Resources.resources
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.GenerateResource.Cache
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe.manifest
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.application
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.pdb
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\bin\Debug\EasyModbus.dll
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe.manifest
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.application
+C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe
