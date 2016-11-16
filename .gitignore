@@ -81,3 +81,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# c# visual studio application
+*.application
+*.pdb
+*.manifest
+*.deploy
+
