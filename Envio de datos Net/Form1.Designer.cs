@@ -37,6 +37,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presión = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -62,11 +67,6 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Hora = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Presión = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etapa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.lblPresionEstablecida = new System.Windows.Forms.Label();
             this.lblTemperaturaEstablecida = new System.Windows.Forms.Label();
@@ -151,6 +151,39 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(544, 228);
             this.dataGridView1.TabIndex = 21;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
+            this.Item.Width = 56;
+            // 
+            // Hora
+            // 
+            this.Hora.HeaderText = "Hora";
+            this.Hora.Name = "Hora";
+            this.Hora.ReadOnly = true;
+            // 
+            // Presión
+            // 
+            this.Presión.HeaderText = "Presión";
+            this.Presión.Name = "Presión";
+            this.Presión.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Temperatura";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Etapa
+            // 
+            this.Etapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.Etapa.HeaderText = "Etapa";
+            this.Etapa.Name = "Etapa";
+            this.Etapa.ReadOnly = true;
+            this.Etapa.Width = 22;
             // 
             // timer2
             // 
@@ -281,8 +314,8 @@
             // 
             // btnMinimizar
             // 
-            this.btnMinimizar.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.btnMinimizar.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnMinimizar.FlatAppearance.BorderSize = 30;
             this.btnMinimizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -392,39 +425,6 @@
             this.Column9.HeaderText = "Observación/Correción";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            this.Item.ReadOnly = true;
-            this.Item.Width = 56;
-            // 
-            // Hora
-            // 
-            this.Hora.HeaderText = "Hora";
-            this.Hora.Name = "Hora";
-            this.Hora.ReadOnly = true;
-            // 
-            // Presión
-            // 
-            this.Presión.HeaderText = "Presión";
-            this.Presión.Name = "Presión";
-            this.Presión.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Temperatura";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Etapa
-            // 
-            this.Etapa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.Etapa.HeaderText = "Etapa";
-            this.Etapa.Name = "Etapa";
-            this.Etapa.ReadOnly = true;
-            this.Etapa.Width = 22;
             // 
             // label1
             // 

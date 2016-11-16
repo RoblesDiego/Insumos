@@ -44,6 +44,7 @@ namespace Envio_de_datos_Net
         public string _HoraFin;
         public int CONSIGNATEMPERATURA = 40;
         public int CONSIGNAPRESION = 64;
+        public int CONSIGNATIEMPO = 101;
         private void button1_Click(object sender, EventArgs e)
         {
             
@@ -148,7 +149,7 @@ namespace Envio_de_datos_Net
                     _LecturaAutomatica = true;
                     //inicia proceso;
 
-
+                    
                     string _lecturaActual = LecturaActualInicio.Hour.ToString() + ":" + LecturaActualInicio.Minute.ToString() + ":" + LecturaActualInicio.Second.ToString();
                     lblHoraInicio.Text = _lecturaActual.ToString();
                     dataGridView1.Rows.Add("Nro Lectura", "Tiempo actual", "Presión", "Temperatura", "Etapa");//Agrega titulo para el excel
@@ -252,7 +253,7 @@ namespace Envio_de_datos_Net
                                     DateTime _LecturaActualFin = DateTime.Now;
 
                                     string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
-
+                                    //int _tiempoPrecalentaminto = readHoldingRegisters[CONSIGNATIEMPO];
                                     lblHoraFin.Text = _lecturaActualFin.ToString();
 
                                     btnIniProceso.Enabled = false;
@@ -262,10 +263,11 @@ namespace Envio_de_datos_Net
                                     btnGuardar.Enabled = true;
                                     //Una vez completado el proceso se procede a guardar y detener el proceso de monitoreo
                                     //pictureBox1.Image = Image.FromFile(@"D:\Imagenes\Bmp\azulText.bmp");
+
                                     _procesosCompletados++;
                                     _HoraInicio = lblHoraInicio.Text.ToString();
                                     _HoraFin = lblHoraFin.Text.ToString();
-                                    dataGridView2.Rows.Add(_procesosCompletados, "", readHoldingRegisters[CONSIGNAPRESION], readHoldingRegisters[CONSIGNATEMPERATURA], _HoraInicio,_HoraFin, _estado);
+                                    dataGridView2.Rows.Add(_procesosCompletados, "", readHoldingRegisters[CONSIGNAPRESION], readHoldingRegisters[CONSIGNATEMPERATURA], _HoraInicio, _HoraFin);//, "", "", _tiempoPrecalentaminto);
                                     pictureBox1.Image = Image.FromFile(@"azulText.bmp");
                                     
                                     //Se activará si se precisa que los datos se guarden de manera directa cada que finalice un proceso.
@@ -297,7 +299,7 @@ namespace Envio_de_datos_Net
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[PRESION].ToString();
                 _temperatura = readHoldingRegisters[TEMPERATURA].ToString();             
-                if (_ticks > 0) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
+                if (_ticks > 0 ) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
                     dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
                     
