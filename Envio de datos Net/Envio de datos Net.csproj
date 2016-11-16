@@ -66,6 +66,9 @@
     <Reference Include="EasyModbus">
       <HintPath>.\EasyModbus.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>.\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -84,6 +87,7 @@
     <Compile Include="Capturar.Designer.cs">
       <DependentUpon>Capturar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Esterilizacion.cs" />
     <Compile Include="Guardar.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -93,6 +97,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistroEsterilizacion.cs" />
+    <Compile Include="RegistroLote.cs" />
+    <Compile Include="ServidorDB.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Capturar.resx">
       <DependentUpon>Capturar.cs</DependentUpon>
     </EmbeddedResource>
