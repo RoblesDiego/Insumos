@@ -54,7 +54,7 @@ namespace Envio_de_datos_Net
                 timer1.Start();
                 modbusClient = new ModbusClient("10.10.255.168", 502); //dirección estática del plc
                 modbusClient.Connect();
-                MessageBox.Show("Conexion establecida :-) ");
+                MessageBox.Show("Conexión establecida.");
                 button1.Enabled = false;
                 btnDesconectar.Enabled = true;
                 btnIniProceso.Enabled = true;
@@ -199,6 +199,8 @@ namespace Envio_de_datos_Net
            
             //seleccion de la etapa de trabajo
             try{
+                lblPresionEstablecida.Text = readHoldingRegisters[CONSIGNAPRESION].ToString();
+                lblTemperaturaEstablecida.Text = readHoldingRegisters[CONSIGNATEMPERATURA].ToString();
                 if (readHoldingRegisters[PRESION] > 12)
                 {
                     _errorPresion = true;
@@ -320,7 +322,7 @@ namespace Envio_de_datos_Net
                 btnGuardar.Enabled = false;
 
                 modbusClient.Disconnect();
-                MessageBox.Show("Conexion cerrada :-( ");
+                MessageBox.Show("Conexion cerrada");
                 timer1.Stop();
                 //timer2.Stop();
 

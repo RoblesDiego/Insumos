@@ -58,6 +58,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblPresionEstablecida = new System.Windows.Forms.Label();
+            this.lblTemperaturaEstablecida = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,14 +70,13 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblPresionEstablecida = new System.Windows.Forms.Label();
-            this.lblTemperaturaEstablecida = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -120,7 +122,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(771, 79);
+            this.label11.Location = new System.Drawing.Point(739, 79);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(208, 25);
             this.label11.TabIndex = 19;
@@ -370,6 +372,36 @@
             this.dataGridView2.TabIndex = 21;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(689, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(258, 25);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Temperatura establecida:";
+            // 
+            // lblPresionEstablecida
+            // 
+            this.lblPresionEstablecida.AutoSize = true;
+            this.lblPresionEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPresionEstablecida.Location = new System.Drawing.Point(953, 79);
+            this.lblPresionEstablecida.Name = "lblPresionEstablecida";
+            this.lblPresionEstablecida.Size = new System.Drawing.Size(36, 25);
+            this.lblPresionEstablecida.TabIndex = 37;
+            this.lblPresionEstablecida.Text = "##";
+            // 
+            // lblTemperaturaEstablecida
+            // 
+            this.lblTemperaturaEstablecida.AutoSize = true;
+            this.lblTemperaturaEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTemperaturaEstablecida.Location = new System.Drawing.Point(953, 131);
+            this.lblTemperaturaEstablecida.Name = "lblTemperaturaEstablecida";
+            this.lblTemperaturaEstablecida.Size = new System.Drawing.Size(36, 25);
+            this.lblTemperaturaEstablecida.TabIndex = 38;
+            this.lblTemperaturaEstablecida.Text = "##";
+            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -386,7 +418,7 @@
             // 
             // Column3
             // 
-            this.Column3.HeaderText = "Presión Psi";
+            this.Column3.HeaderText = "Presión (Psi)";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
@@ -426,44 +458,26 @@
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             // 
-            // label1
+            // pictureBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(721, 131);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 25);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "Temperatura establecida:";
-            // 
-            // lblPresionEstablecida
-            // 
-            this.lblPresionEstablecida.AutoSize = true;
-            this.lblPresionEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPresionEstablecida.Location = new System.Drawing.Point(1003, 79);
-            this.lblPresionEstablecida.Name = "lblPresionEstablecida";
-            this.lblPresionEstablecida.Size = new System.Drawing.Size(36, 25);
-            this.lblPresionEstablecida.TabIndex = 37;
-            this.lblPresionEstablecida.Text = "##";
-            // 
-            // lblTemperaturaEstablecida
-            // 
-            this.lblTemperaturaEstablecida.AutoSize = true;
-            this.lblTemperaturaEstablecida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperaturaEstablecida.Location = new System.Drawing.Point(1003, 131);
-            this.lblTemperaturaEstablecida.Name = "lblTemperaturaEstablecida";
-            this.lblTemperaturaEstablecida.Size = new System.Drawing.Size(36, 25);
-            this.lblTemperaturaEstablecida.TabIndex = 38;
-            this.lblTemperaturaEstablecida.Text = "##";
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(995, 56);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(245, 148);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 39;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1278, 507);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblTemperaturaEstablecida);
             this.Controls.Add(this.lblPresionEstablecida);
             this.Controls.Add(this.label1);
@@ -496,6 +510,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -526,6 +541,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hora;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presión;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Etapa;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPresionEstablecida;
+        private System.Windows.Forms.Label lblTemperaturaEstablecida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -535,14 +558,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Hora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Presión;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Etapa;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblPresionEstablecida;
-        private System.Windows.Forms.Label lblTemperaturaEstablecida;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
