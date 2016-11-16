@@ -87,4 +87,5 @@ $RECYCLE.BIN/
 *.pdb
 *.manifest
 *.deploy
+ServidorDB.cs
 
