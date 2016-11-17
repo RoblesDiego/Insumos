@@ -51,7 +51,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `RegistroEsterilizacion` (
   `idRegistroEsterilizacion` INT NOT NULL AUTO_INCREMENT,
-  `fechahora` TIMESTAMP(0) NULL,
+  `fechahora` TIME NULL,
   `temperatura` INT NULL,
   `presion` DECIMAL(1) NULL,
   `etapa` VARCHAR(45) NULL,
@@ -65,6 +65,10 @@ CREATE TABLE IF NOT EXISTS `RegistroEsterilizacion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+ALTER TABLE `insumosbolivia`.`esterilizacion` 
+ADD COLUMN `fecha` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `RegistroLote_idRegistroLote`;
+ALTER TABLE `insumosbolivia`.`registroesterilizacion` 
+CHANGE COLUMN `presion` `presion` DECIMAL(3,0) NULL DEFAULT NULL ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
