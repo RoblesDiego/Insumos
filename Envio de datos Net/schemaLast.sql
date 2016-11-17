@@ -69,6 +69,9 @@ ALTER TABLE `insumosbolivia`.`esterilizacion`
 ADD COLUMN `fecha` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `RegistroLote_idRegistroLote`;
 ALTER TABLE `insumosbolivia`.`registroesterilizacion` 
 CHANGE COLUMN `presion` `presion` DECIMAL(3,0) NULL DEFAULT NULL ;
+ALTER TABLE `insumosbolivia`.`registroesterilizacion` 
+CHANGE COLUMN `fechahora` `fechahora` TIME NULL DEFAULT NULL ;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

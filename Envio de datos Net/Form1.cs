@@ -245,12 +245,13 @@ namespace Envio_de_datos_Net
         private bool guardarDB()
         {
             Esterilizacion esterilizacion = new Esterilizacion();
-            esterilizacion.horaFinal = this._LecturaActualFin;
-            esterilizacion.horaInicio = this.LecturaActualInicio;
+            esterilizacion.horaFinal =  TimeSpan.Parse(this._LecturaActualFin.ToLongTimeString());
+            esterilizacion.horaInicio = TimeSpan.Parse(this.LecturaActualInicio.ToLongTimeString());
             esterilizacion.presion = int.Parse(this.lblPresionEstablecida.Text);
             esterilizacion.temperatura = int.Parse(this.lblTemperaturaEstablecida.Text);
             esterilizacion.tiempoCalentamiento = this.conteoMin;
             esterilizacion.tiempoEsterilizado = this.conteoEMin;
+            esterilizacion.noEsterilizacion = 0;
             if (esterilizacion.guardar())
             {
                 esterilizacion.obtenerId();
@@ -371,5 +372,11 @@ namespace Envio_de_datos_Net
         public DateTime _LecturaActualFin { get; set; }
 
         public DateTime LecturaActualInicio { get; set; }
+
+        private void bInformes_Click(object sender, EventArgs e)
+        {
+            FormGeneradordeInforme f = new FormGeneradordeInforme();
+            f.Show();
+        }
     }
 }

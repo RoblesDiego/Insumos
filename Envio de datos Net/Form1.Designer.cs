@@ -64,6 +64,7 @@
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lblTEsterilizacion = new System.Windows.Forms.Label();
+            this.bInformes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -413,6 +414,18 @@
             this.lblTEsterilizacion.TabIndex = 48;
             this.lblTEsterilizacion.Text = "##:##:##";
             // 
+            // bInformes
+            // 
+            this.bInformes.BackColor = System.Drawing.SystemColors.Control;
+            this.bInformes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bInformes.Location = new System.Drawing.Point(245, 10);
+            this.bInformes.Name = "bInformes";
+            this.bInformes.Size = new System.Drawing.Size(100, 31);
+            this.bInformes.TabIndex = 49;
+            this.bInformes.Text = "Informes";
+            this.bInformes.UseVisualStyleBackColor = false;
+            this.bInformes.Click += new System.EventHandler(this.bInformes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +434,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(813, 507);
             this.ControlBox = false;
+            this.Controls.Add(this.bInformes);
             this.Controls.Add(this.lblTEsterilizacion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnMinimizar);
@@ -495,6 +509,7 @@
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTEsterilizacion;
+        private System.Windows.Forms.Button bInformes;
     }
 }
 

@@ -10,19 +10,19 @@ namespace SaveToMySQL
     class Esterilizacion : IEquatable<Esterilizacion>
     {
         public int id { get; set; }
-        public string noEsterilizacion { get; set; }
+        public int noEsterilizacion { get; set; }
         public string tipoPresentacion { get; set; }
-        public int presion { get; set; }
+        public decimal presion { get; set; }
         public int temperatura { get; set; }
-        public DateTime horaInicio { get; set; }
-        public DateTime horaFinal { get; set; }
+        public TimeSpan horaInicio { get; set; }
+        public TimeSpan horaFinal { get; set; }
         public int tiempoCalentamiento { get; set; }
         public int tiempoEsterilizado { get; set; }
         public string observacion { get; set; }
 
         public RegistroLote registroLote { get; set; }
 
-
+        public DateTime fecha { get; set; }
         public bool guardarRegistros(DataGridView grd, Esterilizacion es)
         {
             bool guardo = false;
@@ -50,9 +50,9 @@ namespace SaveToMySQL
                                                "tipoPresentacion, presion, temperatura, horaInicio, horaFinal, " +
                                                "tiempoCalentamiento, tiempoEsterilizado, Observacion) " +
                                                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}');",
-                                               (this.noEsterilizacion == null ? "0" : this.noEsterilizacion), (this.tipoPresentacion == null ? "0" : this.tipoPresentacion), 
+                                               this.noEsterilizacion, (this.tipoPresentacion == null ? "0" : this.tipoPresentacion), 
                                                this.presion, this.temperatura,
-                                               this.horaInicio.ToLongTimeString(), this.horaFinal.ToLongTimeString(), this.tiempoCalentamiento, this.tiempoEsterilizado,
+                                               this.horaInicio.ToString(), this.horaFinal.ToString(), this.tiempoCalentamiento, this.tiempoEsterilizado,
                                                (this.observacion == null ? "N/A" : this.observacion));
             Console.WriteLine(CommandText);
             return ServidorDB.insertar(CommandText);
@@ -64,22 +64,27 @@ namespace SaveToMySQL
                 this.id = ServidorDB.obtenerId(clausula, "idEsterilizacion");
         }
 
-        public static System.Data.DataTable listaLotes()
+        public static System.Data.DataTable listaEsterilizaciones()
         {
             return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion order by fecha ASC");
         }
 
-        public static List<Esterilizacion> listaEsterilizacion()
+        public static System.Data.DataTable listaEsterilizacionesSinLote()
+        {
+            return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote is null order by fecha ASC");
+        }
+
+        public static List<Esterilizacion> listaEsterilizacion(bool conlote)
         {
             List<Esterilizacion> lotes = new List<Esterilizacion>();
-            System.Data.DataTable dt = listaLotes();
+            System.Data.DataTable dt = (conlote?listaEsterilizaciones():listaEsterilizacionesSinLote());
             lotes = Utils.ConvertDataTable<Esterilizacion>(dt);
             return lotes;
         }
 
         public override string ToString()
         {
-            return this.id.ToString();
+            return ("Fecha: "+this.fecha+"  Inicio: " + this.horaInicio + "  Fin: "+this.horaFinal);
         }
 
         public override bool Equals(object obj)
