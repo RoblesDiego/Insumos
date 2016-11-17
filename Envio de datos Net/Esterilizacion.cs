@@ -32,7 +32,7 @@ namespace SaveToMySQL
                 RegistroEsterilizacion registro = new RegistroEsterilizacion();
                 //item hora presion temperatura estado
                 string [] cadenas = grd.Rows[i].Cells[1].Value.ToString().Split(limitadores);
-                registro.fechaHora = new DateTime(1,1,1, int.Parse(cadenas[0]), int.Parse(cadenas[0]), int.Parse(cadenas[0]));
+                registro.fechaHora = new DateTime(1,1,1, int.Parse(cadenas[0]), int.Parse(cadenas[1]), int.Parse(cadenas[2]));
                 registro.presion = int.Parse(grd.Rows[i].Cells[2].Value.ToString());
                 registro.temperatura = int.Parse(grd.Rows[i].Cells[3].Value.ToString());
                 registro.etapa = grd.Rows[i].Cells[4].Value.ToString();
