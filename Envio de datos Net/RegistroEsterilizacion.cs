@@ -14,15 +14,16 @@ namespace SaveToMySQL
         public int temperatura { get; set; }
         public string etapa { get; set; }
         public Esterilizacion esterilizacion { get; set; }
-
+        public int esterilizacionid { get; set; }
         public bool guardar()
         {
             string CommandText = string.Format("Insert into RegistroEsterilizacion(fechahora, " +
                                                "temperatura, presion, etapa," +
                                                "Esterilizacion_idEsterilizacion) " +
-                                               "values ('{0}','{1}','{2}','{3}','{4}');", 
-                                               this.fechaHora, this.temperatura, this.presion, this.etapa,
-                                               this.esterilizacion.id);
+                                               "values ('{0}','{1}','{2}','{3}','{4}');",
+                                               this.fechaHora.Hour + ":" + this.fechaHora.Minute + ":" + this.fechaHora.Second,
+                                               this.temperatura, this.presion, this.etapa,
+                                               this.esterilizacionid);
             Console.WriteLine(CommandText);
             return ServidorDB.insertar(CommandText);
         }

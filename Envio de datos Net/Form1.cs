@@ -253,7 +253,8 @@ namespace Envio_de_datos_Net
             esterilizacion.tiempoEsterilizado = this.conteoEMin;
             if (esterilizacion.guardar())
             {
-                return true;
+                esterilizacion.obtenerId();
+                return esterilizacion.guardarRegistros(this.dataGridView1, esterilizacion);
             }
             return false;
         }

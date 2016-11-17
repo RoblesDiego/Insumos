@@ -23,10 +23,25 @@ namespace SaveToMySQL
         public RegistroLote registroLote { get; set; }
 
 
-        public void guardarRegistros(DataGridView data, int presion, int temperatura, DateTime horainicio, DateTime horafin,
-            int tiempoC, int tiempoE)
+        public bool guardarRegistros(DataGridView grd, Esterilizacion es)
         {
-
+            bool guardo = false;
+            char[] limitadores = {':',' '};
+            for (int i = 0; i < grd.Rows.Count - 1; )
+            {
+                RegistroEsterilizacion registro = new RegistroEsterilizacion();
+                //item hora presion temperatura estado
+                string [] cadenas = grd.Rows[i].Cells[1].Value.ToString().Split(limitadores);
+                registro.fechaHora = new DateTime(1,1,1, int.Parse(cadenas[0]), int.Parse(cadenas[0]), int.Parse(cadenas[0]));
+                registro.presion = int.Parse(grd.Rows[i].Cells[2].Value.ToString());
+                registro.temperatura = int.Parse(grd.Rows[i].Cells[3].Value.ToString());
+                registro.etapa = grd.Rows[i].Cells[4].Value.ToString();
+                registro.esterilizacionid = es.id;
+                registro.guardar();
+                i++;
+                guardo = true;
+            }
+            return guardo;
         }
 
         public bool guardar()
@@ -45,11 +60,8 @@ namespace SaveToMySQL
 
         public void obtenerId()
         {
-            if (this.registroLote != null)
-            {
                 string clausula = "SELECT idEsterilizacion FROM insumosbolivia.esterilizacion order by idEsterilizacion DESC LIMIT 1";
                 this.id = ServidorDB.obtenerId(clausula, "idEsterilizacion");
-            }
         }
 
         public static System.Data.DataTable listaLotes()
