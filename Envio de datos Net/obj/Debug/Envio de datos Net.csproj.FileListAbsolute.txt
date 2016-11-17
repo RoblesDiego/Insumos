@@ -40,3 +40,19 @@ C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\
 C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe.manifest
 C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.application
 C:\Users\HP\Documents\GitHub\https---github.com-RoblesDiego-Insumos.git\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe.config
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.ResolveComReference.cache
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.pdb
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csprojResolveAssemblyReference.cache
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Capturar.resources
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Form1.resources
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio_de_datos_Net.Properties.Resources.resources
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.csproj.GenerateResource.Cache
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe.manifest
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.application
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.exe
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\Envio de datos Net.pdb
+D:\Documentos\Programación\Insumos\Envio de datos Net\bin\Debug\EasyModbus.dll
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe.manifest
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.application
+D:\Documentos\Programación\Insumos\Envio de datos Net\obj\Debug\Envio de datos Net.exe

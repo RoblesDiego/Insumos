@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Envio de datos Net.exe.manifest" size="5197">
+    <dependentAssembly dependencyType="install" codebase="Envio de datos Net.exe.manifest" size="5484">
       <assemblyIdentity name="Envio de datos Net.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AEqKReOeRcc1Op7iOjFlJCZnm+ExYR6nEfXTNfYd0V8=</dsig:DigestValue>
+        <dsig:DigestValue>WV101IeWlzWRmDlzfxXPhlHLZ1J1ZxLFp2adJ0uyFMk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

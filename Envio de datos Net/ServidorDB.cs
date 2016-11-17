@@ -11,7 +11,7 @@ namespace SaveToMySQL
      public class ServidorDB
     {
 
-        public static string CADENACONEXION = "server=127.0.0.1;user id=root; database=insumosbolivia; pooling=false; port=3306;";
+        public static string CADENACONEXION = "server=127.0.0.1;user id=root; password=holamundo23; database=insumosbolivia; pooling=false; port=3306;";
         MySqlConnection conexion;
 
         public bool conectarDB()

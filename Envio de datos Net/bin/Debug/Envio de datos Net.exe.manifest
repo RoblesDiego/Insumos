@@ -43,6 +43,11 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="MySql.Data" version="6.9.9.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyModbus.dll" size="53248">
       <assemblyIdentity name="EasyModbus" version="2.6.6132.26384" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -55,14 +60,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Envio de datos Net.exe" size="217032">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Envio de datos Net.exe" size="222208">
       <assemblyIdentity name="Envio de datos Net" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9/Gz26SqCiq0+hZ3EOZ8t3ZsimgZ1aABOPFr2JlEyu4=</dsig:DigestValue>
+        <dsig:DigestValue>qzfZua628vy7tl4jFLBNN+/Zy5B3uq95E+OeJ1K4uC8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

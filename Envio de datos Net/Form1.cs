@@ -27,17 +27,20 @@ namespace Envio_de_datos_Net
         public static bool[] readcoils;
         public static int[] readHoldingRegisters;
 
-        public int ENPROCESO = 8;
-        public int ESTERELIZACION = 50;
+        public int ENPROCESO = 9;
+        public int ESTERELIZACION = 2;
         public int PRESION = 15;
         public int TEMPERATURA = 14;
+        public int PARADAEMERGENCIA = 16;
 
+        
         public bool _enProceso;
         public bool _precalentamieno;
         public bool _esterelizacion;
         public bool _completado;
         public bool _IniProceso;
         public bool _LecturaAutomatica = false;
+        public int _IniEsterilizacion = 0;
 
         //para datagridview2
         public int _procesosCompletados;
@@ -51,7 +54,8 @@ namespace Envio_de_datos_Net
 
         private int _ticks;
         private string _presion;
-        private string _temperatura;
+        private int _temperatura;
+        
         private string _estado;
         //DateTime Horalectura = DateTime.Now;
 
@@ -60,7 +64,7 @@ namespace Envio_de_datos_Net
 
         private void conectarModbus()
         {
-            modbusClient = new ModbusClient("10.10.255.168", 502); //dirección estática del plc
+            modbusClient = new ModbusClient("192.168.0.101", 502); //dirección estática del plc
             modbusClient.Connect();
             MessageBox.Show("Conexión establecida.");
             button1.Enabled = false;
@@ -124,6 +128,10 @@ namespace Envio_de_datos_Net
                     this.iniciarCaptura();
                     listo++;
                 }
+                if (readcoils[PARADAEMERGENCIA] == true)
+                {
+                    this.detenerLectura();
+                }
             }
             catch
             {
@@ -154,14 +162,14 @@ namespace Envio_de_datos_Net
             //seleccion de la etapa de trabajo
                 lblPresionEstablecida.Text = readHoldingRegisters[CONSIGNAPRESION].ToString();
                 lblTemperaturaEstablecida.Text = readHoldingRegisters[CONSIGNATEMPERATURA].ToString();
-                if (readHoldingRegisters[PRESION] > 12)
+                if (readHoldingRegisters[PRESION] > 5000)
                 {
                     _errorPresion = true;
                     pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
                     _estado = "Presión elevada";
                 }
                 else { _errorPresion = false; }
-                if (readHoldingRegisters[TEMPERATURA] > 117)
+                if (readHoldingRegisters[TEMPERATURA] > 11866)
                 {
                     _errorTemperatura = true;
                     pictureBox1.Image = Image.FromFile(@"rojoError.bmp");
@@ -169,6 +177,14 @@ namespace Envio_de_datos_Net
                 }
 
                 else { _errorTemperatura = false; }
+
+            //Agregando condicion
+            if (_temperatura > 10000) //valor normal de trabajo es 11400
+            {
+                _IniEsterilizacion++;
+            }
+
+
                 if (readcoils[ENPROCESO] && !_esterelizacion && !_errorPresion && !_errorTemperatura)
                 {
                     _estado = "Calentamiento";
@@ -178,7 +194,8 @@ namespace Envio_de_datos_Net
                 }
                 else
                 {
-                    if (readcoils[ESTERELIZACION] && _enProceso && !_errorPresion && !_errorTemperatura)
+                    //if (readcoils[ESTERELIZACION] && _enProceso && !_errorPresion && !_errorTemperatura)
+                        if (_IniEsterilizacion >0 && _enProceso && !_errorPresion && !_errorTemperatura)
                     {
                         _estado = "Esterilizacion";
                         _precalentamieno = false;
@@ -186,14 +203,16 @@ namespace Envio_de_datos_Net
                         pictureBox1.Image = Image.FromFile(@"amarilloText.bmp");
                     }
                     else
-                    { 
-                        if (_esterelizacion && !readcoils[ESTERELIZACION] && !_precalentamieno && !_errorPresion && !_errorTemperatura)
+                    {
+                        if (_esterelizacion && conteoEMin > 1)
+                        //if ( _IniEsterilizacion  && !readcoils[ESTERELIZACION] && !_precalentamieno && !_errorPresion && !_errorTemperatura)
                         {
                             
                             _estado = "Completado";
                             _enProceso = false;
                             _completado = true;
                             _esterelizacion = false;
+                            _IniEsterilizacion = 0;
                            
                                 if (_completado == true && _esterelizacion == false)
                                 {
@@ -234,11 +253,13 @@ namespace Envio_de_datos_Net
                 label13.Text = _ticks.ToString();
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
                 _presion = readHoldingRegisters[PRESION].ToString();
-                _temperatura = readHoldingRegisters[TEMPERATURA].ToString();             
+                _temperatura = int.Parse( readHoldingRegisters[TEMPERATURA].ToString());
+
+                int _temperatura10 = _temperatura / 100;
                 
                 if (_ticks > 0 ) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
-                    dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura, _estado);
+                    dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura10, _estado);
                 }
         }
 
@@ -332,7 +353,7 @@ namespace Envio_de_datos_Net
             timer2.Start();
             //this.horaInicio = LecturaActualInicio;
         }
-        private void btnFinProceso_Click(object sender, EventArgs e)
+        private void detenerLectura()
         {
             btnIniProceso.Enabled = false;
             btnIniProceso.Enabled = true;
@@ -344,9 +365,27 @@ namespace Envio_de_datos_Net
 
             string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
             lblHoraFin.Text = _lecturaActualFin.ToString();
-
+            _IniEsterilizacion = 0;
             timer2.Stop();
             listo = 0;
+        }
+        private void btnFinProceso_Click(object sender, EventArgs e)
+        {
+            this.detenerLectura();
+            //btnIniProceso.Enabled = false;
+            //btnIniProceso.Enabled = true;
+            //btnDesconectar.Enabled = true;
+            //btnFinProceso.Enabled = false;
+            //btnGuardar.Enabled = true;
+            //_IniProceso = false;
+            //DateTime _LecturaActualFin = DateTime.Now;
+
+            //string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
+            //lblHoraFin.Text = _lecturaActualFin.ToString();
+
+            //timer2.Stop();
+           // listo = 0;
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
