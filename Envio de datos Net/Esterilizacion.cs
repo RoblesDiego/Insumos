@@ -9,7 +9,7 @@ namespace SaveToMySQL
 {
     class Esterilizacion : IEquatable<Esterilizacion>
     {
-        public int id { get; set; }
+        public int idEsterilizacion { get; set; }
         public int noEsterilizacion { get; set; }
         public string tipoPresentacion { get; set; }
         public decimal presion { get; set; }
@@ -20,6 +20,7 @@ namespace SaveToMySQL
         public int tiempoEsterilizado { get; set; }
         public string observacion { get; set; }
 
+        public int RegistroLote_idRegistroLote { get; set; }
         public RegistroLote registroLote { get; set; }
 
         public DateTime fecha { get; set; }
@@ -36,7 +37,7 @@ namespace SaveToMySQL
                 registro.presion = int.Parse(grd.Rows[i].Cells[2].Value.ToString());
                 registro.temperatura = int.Parse(grd.Rows[i].Cells[3].Value.ToString());
                 registro.etapa = grd.Rows[i].Cells[4].Value.ToString();
-                registro.esterilizacionid = es.id;
+                registro.esterilizacionid = es.idEsterilizacion;
                 registro.guardar();
                 i++;
                 guardo = true;
@@ -61,7 +62,7 @@ namespace SaveToMySQL
         public void obtenerId()
         {
                 string clausula = "SELECT idEsterilizacion FROM insumosbolivia.esterilizacion order by idEsterilizacion DESC LIMIT 1";
-                this.id = ServidorDB.obtenerId(clausula, "idEsterilizacion");
+                this.idEsterilizacion = ServidorDB.obtenerId(clausula, "idEsterilizacion");
         }
 
         public static System.Data.DataTable listaEsterilizaciones()
@@ -71,7 +72,9 @@ namespace SaveToMySQL
 
         public static System.Data.DataTable listaEsterilizacionesSinLote()
         {
-            return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote is null order by fecha ASC");
+            return ServidorDB.listar("SELECT idEsterilizacion, noEsterilizacion, tipoPresentacion, presion," + 
+            "temperatura, horaInicio, horaFinal, tiempoCalentamiento, tiempoEsterilizado, Observacion, fecha "+
+            "FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote is null order by fecha ASC");
         }
 
         public static List<Esterilizacion> listaEsterilizacion(bool conlote)
@@ -97,13 +100,30 @@ namespace SaveToMySQL
 
         public override int GetHashCode()
         {
-            return id;
+            return this.idEsterilizacion;
         }
 
         public bool Equals(Esterilizacion e)
         {
             if (e == null) return false;
-            return (this.id.Equals(e.id));
+            return (this.idEsterilizacion.Equals(e.idEsterilizacion));
+        }
+
+        internal void actualizar(int loteid)
+        {
+            string CommandText = string.Format("UPDATE insumosbolivia.esterilizacion SET RegistroLote_idRegistroLote='{0}'"+
+                                               "WHERE idEsterilizacion='{1}'", 
+                                               loteid, this.idEsterilizacion);
+            Console.WriteLine(CommandText);
+            ServidorDB.insertar(CommandText);
+        }
+
+        public static void actualizarEsterilizacion(int idEsterilizacion, int loteid){
+            string CommandText = string.Format("UPDATE insumosbolivia.esterilizacion SET RegistroLote_idRegistroLote='{0}'"+
+                                               "WHERE idEsterilizacion='{1}'", 
+                                               loteid, idEsterilizacion);
+            Console.WriteLine(CommandText);
+            ServidorDB.insertar(CommandText);
         }
     }
 }

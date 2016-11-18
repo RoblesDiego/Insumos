@@ -18,20 +18,17 @@ namespace SaveToMySQL
         public bool guardar()
         {
             string CommandText = string.Format("Insert into registrolote(codigoRegistroLote," +
-                                               "versionControl, lote) " +
-                                               "values ('{0}','{1}','{2}');", this.codigoRegistroLote,
-                                               this.versionControl, this.lote);
+                                               "versionControl, lote, fecha) " +
+                                               "values ('{0}','{1}','{2}','{3}');", this.codigoRegistroLote,
+                                               this.versionControl, this.lote, this.fecha);
             Console.WriteLine(CommandText);
             return ServidorDB.insertar(CommandText);
         }
 
         public void obtenerId()
         {
-            if (this.codigoRegistroLote != null)
-            {
-                string clausula = "select idRegistroLote from insumosbolivia.registrolote where codigoRegistroLote='" + this.codigoRegistroLote + "'";
-                this.id = ServidorDB.obtenerId(clausula, "idRegistroLote");
-            }
+            string clausula = "SELECT idRegistroLote FROM insumosbolivia.registrolote order by idRegistroLote DESC Limit 1";
+            this.id = ServidorDB.obtenerId(clausula, "idRegistroLote");
         }
 
         public static System.Data.DataTable listaLotes()
