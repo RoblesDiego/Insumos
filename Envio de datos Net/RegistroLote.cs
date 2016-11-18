@@ -9,7 +9,7 @@ namespace SaveToMySQL
 {
     class RegistroLote : IEquatable<RegistroLote>
     {
-        public int id { get; set; }
+        public int idRegistroLote { get; set; }
         public string codigoRegistroLote { get; set; }
         public int versionControl { get; set; }
         public string lote { get; set; }
@@ -28,7 +28,7 @@ namespace SaveToMySQL
         public void obtenerId()
         {
             string clausula = "SELECT idRegistroLote FROM insumosbolivia.registrolote order by idRegistroLote DESC Limit 1";
-            this.id = ServidorDB.obtenerId(clausula, "idRegistroLote");
+            this.idRegistroLote = ServidorDB.obtenerId(clausula, "idRegistroLote");
         }
 
         public static System.Data.DataTable listaLotes()
@@ -46,7 +46,7 @@ namespace SaveToMySQL
 
         public override string ToString()
         {
-            return this.id.ToString();
+            return this.idRegistroLote.ToString();
         }
 
         public override bool Equals(object obj)
@@ -59,13 +59,13 @@ namespace SaveToMySQL
 
         public override int GetHashCode()
         {
-            return id;
+            return this.idRegistroLote;
         }
 
         public bool Equals(RegistroLote lote)
         {
             if (lote == null) return false;
-            return (this.id.Equals(lote.id));
+            return (this.idRegistroLote.Equals(lote.idRegistroLote));
         }
 
     }

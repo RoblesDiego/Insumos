@@ -70,6 +70,11 @@ namespace SaveToMySQL
             return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion order by fecha ASC");
         }
 
+        public static System.Data.DataTable listaEsterilizacionesLote(int idLote)
+        {
+            return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote=" + idLote + " order by fecha ASC");
+        }
+
         public static System.Data.DataTable listaEsterilizacionesSinLote()
         {
             return ServidorDB.listar("SELECT idEsterilizacion, noEsterilizacion, tipoPresentacion, presion," + 
