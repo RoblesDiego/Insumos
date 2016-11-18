@@ -59,12 +59,15 @@ namespace Envio_de_datos_Net
 
         private void FormGeneradordeInforme_Load(object sender, EventArgs e)
         {
+
             
         }
 
         private void bRegistrarLote_Click(object sender, EventArgs e)
         {
             this.panelRegistrarLote.Enabled = true;
+            this.panelGeneradorInforme.Visible = false;
+            this.panelGeneradorInforme.Refresh();
             this.dataGridView1.DataSource = Esterilizacion.listaEsterilizacionesSinLote();
             this.panelRegistrarLote.Visible = true;
             this.panelRegistrarLote.Refresh();
@@ -83,6 +86,7 @@ namespace Envio_de_datos_Net
                 this.txbFGFecha.Text = lote.fecha.ToShortDateString();
                 this.txbFGLote.Text = lote.lote;
                 this.txbFGVersion.Text = lote.versionControl.ToString();
+                this.ListarEsterilizaciones(lote.idRegistroLote);
                 this.NavegacionGenerarInforme();
                 this.bGenerarInforme.Enabled = true;
             }
@@ -159,7 +163,49 @@ namespace Envio_de_datos_Net
 
         private void bGInforme_Click(object sender, EventArgs e)
         {
-            Conexion_Net _ExportaraExcel = new Conexion_Net();
+            this.UpdateExcel();
         }
+
+        private void UpdateExcel()
+        {
+            Microsoft.Office.Interop.Excel.Application oXL = null;
+            Microsoft.Office.Interop.Excel._Workbook oWB = null;
+            Microsoft.Office.Interop.Excel._Worksheet oSheet = null;
+
+            try
+            {
+                oXL = new Microsoft.Office.Interop.Excel.Application();
+                oWB = oXL.Workbooks.Open("c:\\InsumosBoliviaTemplate.xlsx");
+                oSheet = String.IsNullOrEmpty("Hoja1") ? (Microsoft.Office.Interop.Excel._Worksheet)oWB.ActiveSheet : (Microsoft.Office.Interop.Excel._Worksheet)oWB.Worksheets["Hoja1"];
+                oSheet.Cells[2, 8] = this.txbFGCodigo.Text;
+                oSheet.Cells[3, 8] = this.txbFGVersion.Text;
+                oSheet.Cells[5, 3] = this.txbFGFecha.Text;
+                oSheet.Cells[5, 8] = this.txbFGLote.Text;
+                for (int i = 0; i < dataGridView2.Rows.Count-1; i++)
+                {
+                    oSheet.Cells[8 + i, 1] = i+1;
+                    oSheet.Cells[8 + i, 2] = dataGridView2.Rows[i].Cells[1].Value.ToString();
+                    oSheet.Cells[8 + i, 3] = dataGridView2.Rows[i].Cells[2].Value.ToString();
+                    oSheet.Cells[8 + i, 4] = dataGridView2.Rows[i].Cells[3].Value.ToString();
+                    oSheet.Cells[8 + i, 5] = dataGridView2.Rows[i].Cells[4].Value.ToString();
+                    oSheet.Cells[8 + i, 6] = dataGridView2.Rows[i].Cells[5].Value.ToString();
+                    oSheet.Cells[8 + i, 7] = dataGridView2.Rows[i].Cells[6].Value.ToString();
+                    oSheet.Cells[8 + i, 8] = dataGridView2.Rows[i].Cells[7].Value.ToString();
+                    oSheet.Cells[8 + i, 9] = dataGridView2.Rows[i].Cells[8].Value.ToString();
+                }
+
+                oWB.SaveAs("c:\\InsumosBolivia1.xlsx");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (oWB != null)
+                    oWB.Close();
+            }
+        }
+
     }
 }

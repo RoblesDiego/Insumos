@@ -67,18 +67,17 @@ namespace SaveToMySQL
 
         public static System.Data.DataTable listaEsterilizaciones()
         {
-            return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion order by fecha ASC");
+            return ServidorDB.listar("SELECT idEsterilizacion, tipoPresentacion, presion, temperatura, horaInicio, horaFinal, tiempoCalentamiento, tiempoEsterilizado, Observacion, noEsterilizacion, fecha  FROM insumosbolivia.Esterilizacion order by fecha ASC");
         }
 
         public static System.Data.DataTable listaEsterilizacionesLote(int idLote)
         {
-            return ServidorDB.listar("SELECT * FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote=" + idLote + " order by fecha ASC");
+            return ServidorDB.listar("SELECT idEsterilizacion, tipoPresentacion, presion, temperatura, horaInicio, horaFinal, tiempoCalentamiento, tiempoEsterilizado, Observacion, noEsterilizacion, fecha FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote=" + idLote + " order by fecha ASC");
         }
 
         public static System.Data.DataTable listaEsterilizacionesSinLote()
         {
-            return ServidorDB.listar("SELECT idEsterilizacion, noEsterilizacion, tipoPresentacion, presion," + 
-            "temperatura, horaInicio, horaFinal, tiempoCalentamiento, tiempoEsterilizado, Observacion, fecha "+
+            return ServidorDB.listar("SELECT idEsterilizacion, tipoPresentacion, presion, temperatura, horaInicio, horaFinal, tiempoCalentamiento, tiempoEsterilizado, Observacion, noEsterilizacion, fecha "+
             "FROM insumosbolivia.Esterilizacion where RegistroLote_idRegistroLote is null order by fecha ASC");
         }
 

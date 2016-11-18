@@ -40,10 +40,13 @@
             this.bGuardar = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelRegistrarLote = new System.Windows.Forms.Panel();
-            this.bRegistrarLote = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.bRegistrarLote = new System.Windows.Forms.Button();
             this.bGenerarInforme = new System.Windows.Forms.Button();
             this.panelGeneradorInforme = new System.Windows.Forms.Panel();
+            this.txbFGFecha = new System.Windows.Forms.TextBox();
+            this.bSiguiente = new System.Windows.Forms.Button();
+            this.bAnterior = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,9 +57,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txbFGVersion = new System.Windows.Forms.TextBox();
-            this.bAnterior = new System.Windows.Forms.Button();
-            this.bSiguiente = new System.Windows.Forms.Button();
-            this.txbFGFecha = new System.Windows.Forms.TextBox();
             this.esterilizacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelRegistrarLote.SuspendLayout();
@@ -180,20 +180,9 @@
             this.panelRegistrarLote.Location = new System.Drawing.Point(12, 42);
             this.panelRegistrarLote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelRegistrarLote.Name = "panelRegistrarLote";
-            this.panelRegistrarLote.Size = new System.Drawing.Size(27, 400);
+            this.panelRegistrarLote.Size = new System.Drawing.Size(966, 400);
             this.panelRegistrarLote.TabIndex = 12;
             this.panelRegistrarLote.Visible = false;
-            // 
-            // bRegistrarLote
-            // 
-            this.bRegistrarLote.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bRegistrarLote.Location = new System.Drawing.Point(12, 5);
-            this.bRegistrarLote.Name = "bRegistrarLote";
-            this.bRegistrarLote.Size = new System.Drawing.Size(111, 30);
-            this.bRegistrarLote.TabIndex = 13;
-            this.bRegistrarLote.Text = "Registrar Lote";
-            this.bRegistrarLote.UseVisualStyleBackColor = true;
-            this.bRegistrarLote.Click += new System.EventHandler(this.bRegistrarLote_Click);
             // 
             // label5
             // 
@@ -205,6 +194,17 @@
             this.label5.Size = new System.Drawing.Size(324, 24);
             this.label5.TabIndex = 12;
             this.label5.Text = "Formulario de Registro de Lote";
+            // 
+            // bRegistrarLote
+            // 
+            this.bRegistrarLote.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bRegistrarLote.Location = new System.Drawing.Point(12, 5);
+            this.bRegistrarLote.Name = "bRegistrarLote";
+            this.bRegistrarLote.Size = new System.Drawing.Size(111, 30);
+            this.bRegistrarLote.TabIndex = 13;
+            this.bRegistrarLote.Text = "Registrar Lote";
+            this.bRegistrarLote.UseVisualStyleBackColor = true;
+            this.bRegistrarLote.Click += new System.EventHandler(this.bRegistrarLote_Click);
             // 
             // bGenerarInforme
             // 
@@ -234,12 +234,47 @@
             this.panelGeneradorInforme.Controls.Add(this.label9);
             this.panelGeneradorInforme.Controls.Add(this.label10);
             this.panelGeneradorInforme.Controls.Add(this.txbFGVersion);
-            this.panelGeneradorInforme.Location = new System.Drawing.Point(51, 42);
+            this.panelGeneradorInforme.Location = new System.Drawing.Point(13, 42);
             this.panelGeneradorInforme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelGeneradorInforme.Name = "panelGeneradorInforme";
             this.panelGeneradorInforme.Size = new System.Drawing.Size(962, 400);
             this.panelGeneradorInforme.TabIndex = 13;
             this.panelGeneradorInforme.Visible = false;
+            // 
+            // txbFGFecha
+            // 
+            this.txbFGFecha.Location = new System.Drawing.Point(96, 99);
+            this.txbFGFecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txbFGFecha.Name = "txbFGFecha";
+            this.txbFGFecha.ReadOnly = true;
+            this.txbFGFecha.Size = new System.Drawing.Size(175, 22);
+            this.txbFGFecha.TabIndex = 15;
+            // 
+            // bSiguiente
+            // 
+            this.bSiguiente.Enabled = false;
+            this.bSiguiente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSiguiente.Location = new System.Drawing.Point(746, 90);
+            this.bSiguiente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bSiguiente.Name = "bSiguiente";
+            this.bSiguiente.Size = new System.Drawing.Size(93, 28);
+            this.bSiguiente.TabIndex = 14;
+            this.bSiguiente.Text = "Siguiente >";
+            this.bSiguiente.UseVisualStyleBackColor = true;
+            this.bSiguiente.Click += new System.EventHandler(this.bSiguiente_Click);
+            // 
+            // bAnterior
+            // 
+            this.bAnterior.Enabled = false;
+            this.bAnterior.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bAnterior.Location = new System.Drawing.Point(610, 90);
+            this.bAnterior.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bAnterior.Name = "bAnterior";
+            this.bAnterior.Size = new System.Drawing.Size(95, 28);
+            this.bAnterior.TabIndex = 13;
+            this.bAnterior.Text = "< Anterior";
+            this.bAnterior.UseVisualStyleBackColor = true;
+            this.bAnterior.Click += new System.EventHandler(this.bAnterior_Click);
             // 
             // label6
             // 
@@ -342,41 +377,6 @@
             this.txbFGVersion.ReadOnly = true;
             this.txbFGVersion.Size = new System.Drawing.Size(116, 22);
             this.txbFGVersion.TabIndex = 2;
-            // 
-            // bAnterior
-            // 
-            this.bAnterior.Enabled = false;
-            this.bAnterior.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bAnterior.Location = new System.Drawing.Point(610, 90);
-            this.bAnterior.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bAnterior.Name = "bAnterior";
-            this.bAnterior.Size = new System.Drawing.Size(95, 28);
-            this.bAnterior.TabIndex = 13;
-            this.bAnterior.Text = "< Anterior";
-            this.bAnterior.UseVisualStyleBackColor = true;
-            this.bAnterior.Click += new System.EventHandler(this.bAnterior_Click);
-            // 
-            // bSiguiente
-            // 
-            this.bSiguiente.Enabled = false;
-            this.bSiguiente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSiguiente.Location = new System.Drawing.Point(746, 90);
-            this.bSiguiente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.bSiguiente.Name = "bSiguiente";
-            this.bSiguiente.Size = new System.Drawing.Size(93, 28);
-            this.bSiguiente.TabIndex = 14;
-            this.bSiguiente.Text = "Siguiente >";
-            this.bSiguiente.UseVisualStyleBackColor = true;
-            this.bSiguiente.Click += new System.EventHandler(this.bSiguiente_Click);
-            // 
-            // txbFGFecha
-            // 
-            this.txbFGFecha.Location = new System.Drawing.Point(96, 99);
-            this.txbFGFecha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txbFGFecha.Name = "txbFGFecha";
-            this.txbFGFecha.ReadOnly = true;
-            this.txbFGFecha.Size = new System.Drawing.Size(175, 22);
-            this.txbFGFecha.TabIndex = 15;
             // 
             // esterilizacionBindingSource
             // 
