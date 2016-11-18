@@ -183,9 +183,10 @@ namespace Envio_de_datos_Net
             {
                 _IniEsterilizacion++;
             }
+            int Timecomplet = conteoESeg;
 
-
-                if (readcoils[ENPROCESO] && !_esterelizacion && !_errorPresion && !_errorTemperatura)
+            if (readHoldingRegisters[TEMPERATURA] < 10000) 
+            //if (readcoils[ENPROCESO] && !_esterelizacion && !_errorPresion && !_errorTemperatura)
                 {
                     _estado = "Calentamiento";
                     _enProceso = true;
@@ -195,7 +196,7 @@ namespace Envio_de_datos_Net
                 else
                 {
                     //if (readcoils[ESTERELIZACION] && _enProceso && !_errorPresion && !_errorTemperatura)
-                        if (_IniEsterilizacion >0 && _enProceso && !_errorPresion && !_errorTemperatura)
+                        if (readHoldingRegisters [14] > 10000 && _precalentamieno == true )
                     {
                         _estado = "Esterilizacion";
                         _precalentamieno = false;
@@ -204,7 +205,8 @@ namespace Envio_de_datos_Net
                     }
                     else
                     {
-                        if (_esterelizacion && conteoEMin > 1)
+                        if (readcoils [66] ==  true  && _esterelizacion == true )
+                            //if (lblTEsterilizacion.Text  = "1:0".ToString )
                         //if ( _IniEsterilizacion  && !readcoils[ESTERELIZACION] && !_precalentamieno && !_errorPresion && !_errorTemperatura)
                         {
                             
@@ -361,6 +363,8 @@ namespace Envio_de_datos_Net
             btnFinProceso.Enabled = false;
             btnGuardar.Enabled = true;
             _IniProceso = false;
+            _esterelizacion = false;
+            _enProceso = false;
             DateTime _LecturaActualFin = DateTime.Now;
 
             string _lecturaActualFin = _LecturaActualFin.Hour.ToString() + ":" + _LecturaActualFin.Minute.ToString() + ":" + _LecturaActualFin.Second.ToString();
