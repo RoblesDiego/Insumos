@@ -115,6 +115,7 @@ namespace Envio_de_datos_Net
         public int posicionLote { get; set; }
 
         private List<RegistroLote> lotes;
+        private List<RegistroLote> lotesByFecha;
 
         private void ListarEsterilizaciones(int idLote)
         {
@@ -159,6 +160,14 @@ namespace Envio_de_datos_Net
                 this.bGInforme.Enabled = true;
             }
             this.NavegacionGenerarInforme();
+        }
+
+        private void bBuscarLote_Click(object sender, EventArgs e)
+        {
+            lotesByFecha = (from lote in lotes
+                               where lote.fecha >= this.dateTimePickerBuscarLote.Value
+                               orderby lote.fecha
+                               select lote).ToList();
         }
 
         private void bGInforme_Click(object sender, EventArgs e)

@@ -58,6 +58,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txbFGVersion = new System.Windows.Forms.TextBox();
             this.esterilizacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bEsterilizacion = new System.Windows.Forms.Button();
+            this.bBuscarLote = new System.Windows.Forms.Button();
+            this.dateTimePickerBuscarLote = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelRegistrarLote.SuspendLayout();
             this.panelGeneradorInforme.SuspendLayout();
@@ -209,7 +212,7 @@
             // bGenerarInforme
             // 
             this.bGenerarInforme.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bGenerarInforme.Location = new System.Drawing.Point(129, 5);
+            this.bGenerarInforme.Location = new System.Drawing.Point(280, 5);
             this.bGenerarInforme.Name = "bGenerarInforme";
             this.bGenerarInforme.Size = new System.Drawing.Size(145, 30);
             this.bGenerarInforme.TabIndex = 14;
@@ -221,6 +224,8 @@
             // 
             this.panelGeneradorInforme.BackColor = System.Drawing.SystemColors.Window;
             this.panelGeneradorInforme.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelGeneradorInforme.Controls.Add(this.dateTimePickerBuscarLote);
+            this.panelGeneradorInforme.Controls.Add(this.bBuscarLote);
             this.panelGeneradorInforme.Controls.Add(this.txbFGFecha);
             this.panelGeneradorInforme.Controls.Add(this.bSiguiente);
             this.panelGeneradorInforme.Controls.Add(this.bAnterior);
@@ -254,7 +259,7 @@
             // 
             this.bSiguiente.Enabled = false;
             this.bSiguiente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSiguiente.Location = new System.Drawing.Point(746, 90);
+            this.bSiguiente.Location = new System.Drawing.Point(711, 90);
             this.bSiguiente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bSiguiente.Name = "bSiguiente";
             this.bSiguiente.Size = new System.Drawing.Size(93, 28);
@@ -312,10 +317,10 @@
             // 
             this.bGInforme.Enabled = false;
             this.bGInforme.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bGInforme.Location = new System.Drawing.Point(610, 54);
+            this.bGInforme.Location = new System.Drawing.Point(827, 90);
             this.bGInforme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bGInforme.Name = "bGInforme";
-            this.bGInforme.Size = new System.Drawing.Size(229, 28);
+            this.bGInforme.Size = new System.Drawing.Size(128, 28);
             this.bGInforme.TabIndex = 10;
             this.bGInforme.Text = "Generar Informe";
             this.bGInforme.UseVisualStyleBackColor = true;
@@ -382,11 +387,42 @@
             // 
             this.esterilizacionBindingSource.DataSource = typeof(SaveToMySQL.Esterilizacion);
             // 
+            // bEsterilizacion
+            // 
+            this.bEsterilizacion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bEsterilizacion.Location = new System.Drawing.Point(129, 5);
+            this.bEsterilizacion.Name = "bEsterilizacion";
+            this.bEsterilizacion.Size = new System.Drawing.Size(145, 30);
+            this.bEsterilizacion.TabIndex = 15;
+            this.bEsterilizacion.Text = "Editar Esterilizacion";
+            this.bEsterilizacion.UseVisualStyleBackColor = true;
+            // 
+            // bBuscarLote
+            // 
+            this.bBuscarLote.Enabled = false;
+            this.bBuscarLote.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscarLote.Location = new System.Drawing.Point(827, 48);
+            this.bBuscarLote.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bBuscarLote.Name = "bBuscarLote";
+            this.bBuscarLote.Size = new System.Drawing.Size(128, 28);
+            this.bBuscarLote.TabIndex = 16;
+            this.bBuscarLote.Text = "Buscar Lote";
+            this.bBuscarLote.UseVisualStyleBackColor = true;
+            this.bBuscarLote.Click += new System.EventHandler(this.bBuscarLote_Click);
+            // 
+            // dateTimePickerBuscarLote
+            // 
+            this.dateTimePickerBuscarLote.Location = new System.Drawing.Point(610, 54);
+            this.dateTimePickerBuscarLote.Name = "dateTimePickerBuscarLote";
+            this.dateTimePickerBuscarLote.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerBuscarLote.TabIndex = 17;
+            // 
             // FormGeneradordeInforme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
+            this.Controls.Add(this.bEsterilizacion);
             this.Controls.Add(this.panelGeneradorInforme);
             this.Controls.Add(this.bGenerarInforme);
             this.Controls.Add(this.bRegistrarLote);
@@ -439,5 +475,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txbFGVersion;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBuscarLote;
+        private System.Windows.Forms.Button bBuscarLote;
+        private System.Windows.Forms.Button bEsterilizacion;
     }
 }
