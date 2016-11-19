@@ -28,7 +28,9 @@ namespace Envio_de_datos_Net
         public static int[] readHoldingRegisters;
 
         public int ENPROCESO = 9;
-        public int ESTERELIZACION = 2;
+        public int CALENTAMIENTO = 26;
+        public int ESTERELIZACION = 29;
+        public int COMPLETADO = 3;
         public int PRESION = 15;
         public int TEMPERATURA = 14;
         public int PARADAEMERGENCIA = 16;
@@ -46,9 +48,9 @@ namespace Envio_de_datos_Net
         public int _procesosCompletados;
         public string _HoraInicio;
         public string _HoraFin;
-        public int CONSIGNATEMPERATURA = 40;
-        public int CONSIGNAPRESION = 64;
-        public int CONSIGNATIEMPO = 101;
+        public int CONSIGNATEMPERATURA = 8;
+        public int CONSIGNAPRESION = 6;
+        public int CONSIGNATIEMPO = 70;
         private int listo;
         public static bool forms_abiero = false;
 
@@ -118,7 +120,7 @@ namespace Envio_de_datos_Net
                 //int[] 
                     readHoldingRegisters = modbusClient.ReadHoldingRegisters(0, 100);
 
-                if (_IniProceso  == false)
+                if (readcoils [ENPROCESO] == false && readcoils [CALENTAMIENTO] == false && readcoils [ESTERELIZACION] == false && readcoils[COMPLETADO] == false)
                 {
                     pictureBox1.Image = Image.FromFile(@"grisText.bmp");
                     _estado = "apagado";
@@ -160,8 +162,10 @@ namespace Envio_de_datos_Net
         private void timer2_Tick(object sender, EventArgs e)
         {  
             //seleccion de la etapa de trabajo
-                lblPresionEstablecida.Text = readHoldingRegisters[CONSIGNAPRESION].ToString();
-                lblTemperaturaEstablecida.Text = readHoldingRegisters[CONSIGNATEMPERATURA].ToString();
+            int presionestablecida = readHoldingRegisters[CONSIGNAPRESION] / 183;
+                lblPresionEstablecida.Text = presionestablecida.ToString();
+                int temperaturainicial = readHoldingRegisters[12] / 100;
+                lblTemperaturaEstablecida.Text = temperaturainicial.ToString();
                 if (readHoldingRegisters[PRESION] > 5000)
                 {
                     _errorPresion = true;
@@ -179,13 +183,13 @@ namespace Envio_de_datos_Net
                 else { _errorTemperatura = false; }
 
             //Agregando condicion
-            if (_temperatura > 10000) //valor normal de trabajo es 11400
+            if (_temperatura > 11400) //valor normal de trabajo es 11400
             {
                 _IniEsterilizacion++;
             }
             int Timecomplet = conteoESeg;
 
-            if (readHoldingRegisters[TEMPERATURA] < 10000) 
+            if (readcoils [ENPROCESO] == true && readcoils [CALENTAMIENTO] == true &&  _errorPresion == false && _errorTemperatura == false ) 
             //if (readcoils[ENPROCESO] && !_esterelizacion && !_errorPresion && !_errorTemperatura)
                 {
                     _estado = "Calentamiento";
@@ -196,7 +200,7 @@ namespace Envio_de_datos_Net
                 else
                 {
                     //if (readcoils[ESTERELIZACION] && _enProceso && !_errorPresion && !_errorTemperatura)
-                        if (readHoldingRegisters [14] > 10000 && _precalentamieno == true )
+                    if (readcoils[ESTERELIZACION] == true && _errorPresion == false && _errorTemperatura == false)
                     {
                         _estado = "Esterilizacion";
                         _precalentamieno = false;
@@ -205,7 +209,7 @@ namespace Envio_de_datos_Net
                     }
                     else
                     {
-                        if (readcoils [66] ==  true  && _esterelizacion == true )
+                        if (readcoils [COMPLETADO] == true)
                             //if (lblTEsterilizacion.Text  = "1:0".ToString )
                         //if ( _IniEsterilizacion  && !readcoils[ESTERELIZACION] && !_precalentamieno && !_errorPresion && !_errorTemperatura)
                         {
@@ -254,6 +258,7 @@ namespace Envio_de_datos_Net
                 this.incConteo(_precalentamieno);
                 label13.Text = _ticks.ToString();
                 string _tiempoActual = Horalectura.Hour.ToString() + ":" + Horalectura.Minute.ToString() + ":" + Horalectura.Second.ToString();
+                int _presionRes = readHoldingRegisters[PRESION] / 183;
                 _presion = readHoldingRegisters[PRESION].ToString();
                 _temperatura = int.Parse( readHoldingRegisters[TEMPERATURA].ToString());
 
@@ -261,7 +266,7 @@ namespace Envio_de_datos_Net
                 
                 if (_ticks > 0 ) //guarda datos cada 1 seg, osea 1seg+ que lo que se marca
                 {
-                    dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presion, _temperatura10, _estado);
+                    dataGridView1.Rows.Add(_ticks ,_tiempoActual , _presionRes, _temperatura10, _estado);
                 }
         }
 
