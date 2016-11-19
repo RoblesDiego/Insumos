@@ -20,7 +20,7 @@ namespace Envio_de_datos_Net
 
         private void bGuardar_Click(object sender, EventArgs e)
         {
-            if (this.txbCodigo.Text != null && this.txbLote.Text != null && this.txbVersion != null)
+            if (!(this.txbCodigo.Text != null && this.txbLote.Text != null && this.txbVersion != null))
             {
                 MessageBox.Show("Debe ingresar todos los campos (*) requeridos!");
             }
